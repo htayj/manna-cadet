@@ -1,5 +1,5 @@
 layout:
-  qmk_info_json: kinesis.qmk.json
+  qmk_info_json: ../kinesis.qmk.json
 layers:
   normal:
   - t: '='

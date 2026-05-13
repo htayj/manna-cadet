@@ -14,6 +14,7 @@ from __future__ import annotations
 import argparse
 import html
 import json
+import os
 import re
 import shutil
 import subprocess
@@ -628,10 +629,11 @@ def build_keymap_yaml(
         combos.append(combo)
 
     layout_path = Path(qmk_info_json)
-    try:
-        layout_ref = str(layout_path.resolve().relative_to(yaml_path.parent.resolve()))
-    except ValueError:
-        layout_ref = str(layout_path.resolve())
+    # Resolve the output path itself (not just its parent) so generating through
+    # dotfile symlinks still writes layout paths relative to the real output
+    # file in the submodule.
+    yaml_dir = yaml_path.resolve(strict=False).parent
+    layout_ref = os.path.relpath(layout_path.resolve(), yaml_dir)
 
     return {
         "layout": {"qmk_info_json": layout_ref},
@@ -670,8 +672,14 @@ def main() -> int:
         args.output_yaml.write_text(yaml.safe_dump(data, sort_keys=False, allow_unicode=True))
         if args.output_svg:
             args.output_svg.parent.mkdir(parents=True, exist_ok=True)
-            subprocess.run([args.keymap, "draw", str(args.output_yaml), "-o", str(args.output_svg)], check=True)
-            add_modifier_legend(args.output_svg)
+            yaml_for_draw = args.output_yaml.resolve(strict=False)
+            svg_for_draw = args.output_svg.resolve(strict=False)
+            subprocess.run(
+                [args.keymap, "draw", str(yaml_for_draw), "-o", str(svg_for_draw)],
+                check=True,
+                cwd=str(yaml_for_draw.parent),
+            )
+            add_modifier_legend(svg_for_draw)
     except (ConversionError, OSError, subprocess.CalledProcessError) as exc:
         print(f"draw-kanata-keymap.py: {exc}", file=sys.stderr)
         return 1
