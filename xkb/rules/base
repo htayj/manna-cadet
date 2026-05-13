@@ -1,0 +1,18 @@
+! model = keycodes
+  * = evdev
+
+! layout = keycodes
+  * = +aliases(qwerty)
+
+! model = types
+  * = complete
+
+! model = compat
+  * = complete
+
+! model = geometry
+  * = pc(pc104)
+
+! model layout = symbols
+  * spacecadet = pc+inet(evdev)+spacecadet(base)
+  * * = pc+%l%(v)+inet(evdev)

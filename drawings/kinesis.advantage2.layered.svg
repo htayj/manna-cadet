@@ -1,0 +1,831 @@
+<svg width="1012" height="1180" viewBox="0 -110 1012 1180" class="keymap" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<style>/* inherit to force styles through use tags */
+svg path {
+    fill: inherit;
+}
+
+/* font and background color specifications */
+svg.keymap {
+    font-family: SFMono-Regular,Consolas,Liberation Mono,Menlo,monospace;
+    font-size: 14px;
+    font-kerning: normal;
+    text-rendering: optimizeLegibility;
+    fill: #24292e;
+}
+
+/* default key styling */
+rect.key {
+    fill: #f6f8fa;
+}
+
+rect.key, rect.combo {
+    stroke: #c9cccf;
+    stroke-width: 1;
+}
+
+/* default key side styling, only used is draw_key_sides is set */
+rect.side {
+    filter: brightness(90%);
+}
+
+/* color accent for combo boxes */
+rect.combo, rect.combo-separate {
+    fill: #cdf;
+}
+
+/* color accent for held keys */
+rect.held, rect.combo.held {
+    fill: #fdd;
+}
+
+/* color accent for ghost (optional) keys */
+rect.ghost, rect.combo.ghost {
+    stroke-dasharray: 4, 4;
+    stroke-width: 2;
+}
+
+text {
+    text-anchor: middle;
+    dominant-baseline: middle;
+}
+
+/* styling for layer labels */
+text.label {
+    font-weight: bold;
+    text-anchor: start;
+    stroke: white;
+    stroke-width: 4;
+    paint-order: stroke;
+}
+
+/* styling for optional footer */
+text.footer {
+    text-anchor: end;
+    dominant-baseline: auto;
+    stroke: white;
+    stroke-width: 4;
+    paint-order: stroke;
+}
+
+/* styling for combo tap, and key non-tap label text */
+text.combo, text.hold, text.shifted, text.left, text.right {
+    font-size: 11px;
+}
+
+text.hold {
+    text-anchor: middle;
+    dominant-baseline: auto;
+}
+
+text.shifted {
+    text-anchor: middle;
+    dominant-baseline: hanging;
+}
+
+text.left {
+    text-anchor: start;
+}
+
+text.right {
+    text-anchor: end;
+}
+
+text.layer-activator {
+    text-decoration: underline;
+}
+
+/* styling for hold/shifted label text in combo box */
+text.combo.hold, text.combo.shifted, text.combo.left, text.combo.right {
+    font-size: 8px;
+}
+
+/* lighter symbol for transparent keys */
+text.trans {
+    fill: #7b7e81;
+}
+
+/* styling for combo dendrons */
+path.combo {
+    stroke-width: 1;
+    stroke: gray;
+    fill: none;
+}
+
+/* Start Tabler Icons Cleanup */
+/* cannot use height/width with glyphs */
+.icon-tabler > path {
+    fill: inherit;
+    stroke: inherit;
+    stroke-width: 2;
+}
+/* hide tabler's default box */
+.icon-tabler > path[stroke="none"][fill="none"] {
+    visibility: hidden;
+}
+/* End Tabler Icons Cleanup */
+
+rect.mod-shift { fill: #eeeeee; stroke: #8c8c8c; }
+rect.mod-control { fill: #fff3bf; stroke: #d9a300; }
+rect.mod-meta { fill: #ffe2e2; stroke: #e03131; }
+rect.mod-super { fill: #d8fbff; stroke: #00a9c8; }
+rect.mod-alt { fill: #dff0ff; stroke: #6aa8df; }
+rect.mod-hyper { fill: #ffd6ff; stroke: #c026d3; }
+rect.mod-greek { fill: #e4f8e7; stroke: #2f9e44; }
+rect.mod-top { fill: #ffe8cc; stroke: #f08c00; }
+text.greek-legend { fill: #1b7f33; font-weight: 700; }
+text.top-legend { fill: #b35f00; font-weight: 700; }</style>
+<g transform="translate(30, -78)" class="modifier-legend">
+<text x="0" y="0" class="label">modifier colors:</text>
+<rect x="0" y="18" width="20" height="20" rx="4" ry="4" fill="#eeeeee" stroke="#8c8c8c" stroke-width="1"/>
+<text x="28" y="28" style="text-anchor:start; dominant-baseline:middle">shift</text>
+<rect x="120" y="18" width="20" height="20" rx="4" ry="4" fill="#fff3bf" stroke="#d9a300" stroke-width="1"/>
+<text x="148" y="28" style="text-anchor:start; dominant-baseline:middle">control</text>
+<rect x="240" y="18" width="20" height="20" rx="4" ry="4" fill="#ffe2e2" stroke="#e03131" stroke-width="1"/>
+<text x="268" y="28" style="text-anchor:start; dominant-baseline:middle">meta</text>
+<rect x="360" y="18" width="20" height="20" rx="4" ry="4" fill="#d8fbff" stroke="#00a9c8" stroke-width="1"/>
+<text x="388" y="28" style="text-anchor:start; dominant-baseline:middle">super</text>
+<rect x="0" y="52" width="20" height="20" rx="4" ry="4" fill="#dff0ff" stroke="#6aa8df" stroke-width="1"/>
+<text x="28" y="62" style="text-anchor:start; dominant-baseline:middle">alt</text>
+<rect x="120" y="52" width="20" height="20" rx="4" ry="4" fill="#ffd6ff" stroke="#c026d3" stroke-width="1"/>
+<text x="148" y="62" style="text-anchor:start; dominant-baseline:middle">hyper</text>
+<rect x="240" y="52" width="20" height="20" rx="4" ry="4" fill="#e4f8e7" stroke="#2f9e44" stroke-width="1"/>
+<text x="268" y="62" style="text-anchor:start; dominant-baseline:middle">greek</text>
+<rect x="360" y="52" width="20" height="20" rx="4" ry="4" fill="#ffe8cc" stroke="#f08c00" stroke-width="1"/>
+<text x="388" y="62" style="text-anchor:start; dominant-baseline:middle">top</text>
+</g>
+<g transform="translate(30, 0)" class="layer-normal">
+<text x="0" y="28" class="label" id="normal">normal:</text>
+<g transform="translate(0, 56)">
+<g transform="translate(28, 49)" class="key keypos-0">
+<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
+<text x="0" y="0" class="key tap">=</text>
+<text x="0" y="24" class="key hold greek-legend">∅</text>
+</g>
+<g transform="translate(84, 49)" class="key keypos-1">
+<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
+<text x="0" y="0" class="key tap">1</text>
+<text x="0" y="24" class="key hold greek-legend">†</text>
+</g>
+<g transform="translate(140, 28)" class="key keypos-2">
+<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
+<text x="0" y="0" class="key tap">2</text>
+<text x="0" y="24" class="key hold greek-legend">‡</text>
+</g>
+<g transform="translate(196, 28)" class="key keypos-3">
+<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
+<text x="0" y="0" class="key tap">3</text>
+<text x="0" y="24" class="key hold greek-legend">▿</text>
+</g>
+<g transform="translate(252, 28)" class="key keypos-4">
+<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
+<text x="0" y="0" class="key tap">4</text>
+<text x="0" y="24" class="key hold greek-legend">¢</text>
+</g>
+<g transform="translate(308, 28)" class="key keypos-5">
+<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
+<text x="0" y="0" class="key tap">5</text>
+<text x="0" y="24" class="key hold greek-legend">○</text>
+</g>
+<g transform="translate(644, 28)" class="key keypos-6">
+<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
+<text x="0" y="0" class="key tap">6</text>
+<text x="0" y="24" class="key hold greek-legend">▯</text>
+</g>
+<g transform="translate(700, 28)" class="key keypos-7">
+<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
+<text x="0" y="0" class="key tap">7</text>
+<text x="0" y="24" class="key hold greek-legend">÷</text>
+</g>
+<g transform="translate(756, 28)" class="key keypos-8">
+<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
+<text x="0" y="0" class="key tap">8</text>
+<text x="0" y="24" class="key hold greek-legend">×</text>
+</g>
+<g transform="translate(812, 28)" class="key keypos-9">
+<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
+<text x="0" y="0" class="key tap">9</text>
+<text x="0" y="24" class="key hold greek-legend">¶</text>
+</g>
+<g transform="translate(868, 49)" class="key keypos-10">
+<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
+<text x="0" y="0" class="key tap">0</text>
+<text x="0" y="24" class="key hold greek-legend">○</text>
+</g>
+<g transform="translate(924, 49)" class="key keypos-11">
+<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
+<text x="0" y="0" class="key tap">-</text>
+<text x="0" y="24" class="key hold greek-legend">≈</text>
+</g>
+<g transform="translate(28, 105)" class="key keypos-12">
+<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
+<text x="0" y="0" class="key tap">tab</text>
+</g>
+<g transform="translate(84, 105)" class="key keypos-13">
+<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
+<text x="0" y="0" class="key tap">q</text>
+<text x="0" y="24" class="key hold greek-legend">θ</text>
+<text x="0" y="-24" class="key shifted top-legend">∧</text>
+</g>
+<g transform="translate(140, 84)" class="key keypos-14">
+<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
+<text x="0" y="0" class="key tap">w</text>
+<text x="0" y="24" class="key hold greek-legend">ω</text>
+<text x="0" y="-24" class="key shifted top-legend">∨</text>
+</g>
+<g transform="translate(196, 84)" class="key keypos-15">
+<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
+<text x="0" y="0" class="key tap">e</text>
+<text x="0" y="24" class="key hold greek-legend">ε</text>
+<text x="0" y="-24" class="key shifted top-legend">∪</text>
+</g>
+<g transform="translate(252, 84)" class="key keypos-16">
+<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
+<text x="0" y="0" class="key tap">r</text>
+<text x="0" y="24" class="key hold greek-legend">ρ</text>
+<text x="0" y="-24" class="key shifted top-legend">∩</text>
+</g>
+<g transform="translate(308, 84)" class="key keypos-17">
+<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
+<text x="0" y="0" class="key tap">t</text>
+<text x="0" y="24" class="key hold greek-legend">τ</text>
+<text x="0" y="-24" class="key shifted top-legend">⊂</text>
+</g>
+<g transform="translate(364, 84)" class="key keypos-18">
+<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
+</g>
+<g transform="translate(588, 84)" class="key keypos-19">
+<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
+</g>
+<g transform="translate(644, 84)" class="key keypos-20">
+<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
+<text x="0" y="0" class="key tap">y</text>
+<text x="0" y="24" class="key hold greek-legend">ψ</text>
+<text x="0" y="-24" class="key shifted top-legend">⊃</text>
+</g>
+<g transform="translate(700, 84)" class="key keypos-21">
+<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
+<text x="0" y="0" class="key tap">u</text>
+<text x="0" y="24" class="key hold greek-legend">υ</text>
+<text x="0" y="-24" class="key shifted top-legend">∀</text>
+</g>
+<g transform="translate(756, 84)" class="key keypos-22">
+<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
+<text x="0" y="0" class="key tap">i</text>
+<text x="0" y="24" class="key hold greek-legend">ι</text>
+<text x="0" y="-24" class="key shifted top-legend">∞</text>
+</g>
+<g transform="translate(812, 84)" class="key keypos-23">
+<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
+<text x="0" y="0" class="key tap">o</text>
+<text x="0" y="24" class="key hold greek-legend">ο</text>
+<text x="0" y="-24" class="key shifted top-legend">∃</text>
+</g>
+<g transform="translate(868, 105)" class="key keypos-24">
+<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
+<text x="0" y="0" class="key tap">p</text>
+<text x="0" y="24" class="key hold greek-legend">π</text>
+<text x="0" y="-24" class="key shifted top-legend">∂</text>
+</g>
+<g transform="translate(924, 105)" class="key keypos-25">
+<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
+<text x="0" y="0" class="key tap">\</text>
+<text x="0" y="24" class="key hold greek-legend">‖</text>
+</g>
+<g transform="translate(28, 161)" class="key mod-hyper keypos-26">
+<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key mod-hyper"/>
+<text x="0" y="0" class="key mod-hyper tap">esc</text>
+</g>
+<g transform="translate(84, 161)" class="key mod-super keypos-27">
+<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key mod-super"/>
+<text x="0" y="0" class="key mod-super tap">a</text>
+<text x="0" y="24" class="key mod-super hold greek-legend">α</text>
+<text x="0" y="-24" class="key mod-super shifted top-legend">⊥</text>
+</g>
+<g transform="translate(140, 140)" class="key mod-meta keypos-28">
+<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key mod-meta"/>
+<text x="0" y="0" class="key mod-meta tap">s</text>
+<text x="0" y="24" class="key mod-meta hold greek-legend">σ</text>
+<text x="0" y="-24" class="key mod-meta shifted top-legend">⊤</text>
+</g>
+<g transform="translate(196, 140)" class="key mod-control keypos-29">
+<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key mod-control"/>
+<text x="0" y="0" class="key mod-control tap">d</text>
+<text x="0" y="24" class="key mod-control hold greek-legend">δ</text>
+<text x="0" y="-24" class="key mod-control shifted top-legend">⊢</text>
+</g>
+<g transform="translate(252, 140)" class="key mod-shift keypos-30">
+<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key mod-shift"/>
+<text x="0" y="0" class="key mod-shift tap">f</text>
+<text x="0" y="24" class="key mod-shift hold greek-legend">φ</text>
+<text x="0" y="-24" class="key mod-shift shifted top-legend">⊣</text>
+</g>
+<g transform="translate(308, 140)" class="key keypos-31">
+<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
+<text x="0" y="0" class="key tap">g</text>
+<text x="0" y="24" class="key hold greek-legend">γ</text>
+<text x="0" y="-24" class="key shifted top-legend">↑</text>
+</g>
+<g transform="translate(364, 140)" class="key keypos-32">
+<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
+</g>
+<g transform="translate(588, 140)" class="key keypos-33">
+<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
+</g>
+<g transform="translate(644, 140)" class="key keypos-34">
+<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
+<text x="0" y="0" class="key tap">h</text>
+<text x="0" y="24" class="key hold greek-legend">η</text>
+<text x="0" y="-24" class="key shifted top-legend">↓</text>
+</g>
+<g transform="translate(700, 140)" class="key mod-shift keypos-35">
+<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key mod-shift"/>
+<text x="0" y="0" class="key mod-shift tap">j</text>
+<text x="0" y="24" class="key mod-shift hold greek-legend">ϑ</text>
+<text x="0" y="-24" class="key mod-shift shifted top-legend">←</text>
+</g>
+<g transform="translate(756, 140)" class="key mod-control keypos-36">
+<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key mod-control"/>
+<text x="0" y="0" class="key mod-control tap">k</text>
+<text x="0" y="24" class="key mod-control hold greek-legend">κ</text>
+<text x="0" y="-24" class="key mod-control shifted top-legend">→</text>
+</g>
+<g transform="translate(812, 140)" class="key mod-meta keypos-37">
+<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key mod-meta"/>
+<text x="0" y="0" class="key mod-meta tap">l</text>
+<text x="0" y="24" class="key mod-meta hold greek-legend">λ</text>
+<text x="0" y="-24" class="key mod-meta shifted top-legend">↔</text>
+</g>
+<g transform="translate(868, 161)" class="key mod-super keypos-38">
+<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key mod-super"/>
+<text x="0" y="0" class="key mod-super tap">;</text>
+<text x="0" y="24" class="key mod-super hold greek-legend">¨</text>
+</g>
+<g transform="translate(924, 161)" class="key mod-hyper keypos-39">
+<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key mod-hyper"/>
+<text x="0" y="0" class="key mod-hyper tap">&#x27;</text>
+<text x="0" y="24" class="key mod-hyper hold greek-legend">·</text>
+</g>
+<g transform="translate(28, 217)" class="key mod-shift keypos-40">
+<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key mod-shift"/>
+</g>
+<g transform="translate(84, 217)" class="key keypos-41">
+<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
+<text x="0" y="0" class="key tap">z</text>
+<text x="0" y="24" class="key hold greek-legend">ζ</text>
+<text x="0" y="-24" class="key shifted top-legend">∨</text>
+</g>
+<g transform="translate(140, 196)" class="key keypos-42">
+<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
+<text x="0" y="0" class="key tap">x</text>
+<text x="0" y="24" class="key hold greek-legend">ξ</text>
+<text x="0" y="-24" class="key shifted top-legend">⌊</text>
+</g>
+<g transform="translate(196, 196)" class="key keypos-43">
+<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
+<text x="0" y="0" class="key tap">c</text>
+<text x="0" y="24" class="key hold greek-legend">χ</text>
+<text x="0" y="-24" class="key shifted top-legend">⌈</text>
+</g>
+<g transform="translate(252, 196)" class="key keypos-44">
+<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
+<text x="0" y="0" class="key tap">v</text>
+<text x="0" y="24" class="key hold greek-legend">ς</text>
+<text x="0" y="-24" class="key shifted top-legend">≃</text>
+</g>
+<g transform="translate(308, 196)" class="key keypos-45">
+<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
+<text x="0" y="0" class="key tap">b</text>
+<text x="0" y="24" class="key hold greek-legend">β</text>
+<text x="0" y="-24" class="key shifted top-legend">≡</text>
+</g>
+<g transform="translate(644, 196)" class="key keypos-46">
+<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
+<text x="0" y="0" class="key tap">n</text>
+<text x="0" y="24" class="key hold greek-legend">ν</text>
+<text x="0" y="-24" class="key shifted top-legend">≤</text>
+</g>
+<g transform="translate(700, 196)" class="key keypos-47">
+<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
+<text x="0" y="0" class="key tap">m</text>
+<text x="0" y="24" class="key hold greek-legend">μ</text>
+<text x="0" y="-24" class="key shifted top-legend">≥</text>
+</g>
+<g transform="translate(756, 196)" class="key keypos-48">
+<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
+<text x="0" y="0" class="key tap">,</text>
+<text x="0" y="24" class="key hold greek-legend">«</text>
+</g>
+<g transform="translate(812, 196)" class="key keypos-49">
+<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
+<text x="0" y="0" class="key tap">.</text>
+<text x="0" y="24" class="key hold greek-legend">»</text>
+</g>
+<g transform="translate(868, 217)" class="key keypos-50">
+<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
+<text x="0" y="0" class="key tap">/</text>
+<text x="0" y="24" class="key hold greek-legend">∫</text>
+</g>
+<g transform="translate(924, 217)" class="key mod-shift keypos-51">
+<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key mod-shift"/>
+</g>
+<g transform="translate(28, 273)" class="key keypos-52">
+<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
+</g>
+<g transform="translate(84, 273)" class="key keypos-53">
+<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
+<text x="0" y="0" class="key tap">grv</text>
+</g>
+<g transform="translate(140, 252)" class="key keypos-54">
+<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
+<text x="0" y="0" class="key tap">menu</text>
+</g>
+<g transform="translate(196, 252)" class="key keypos-55">
+<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
+<text x="0" y="0" class="key tap">left</text>
+</g>
+<g transform="translate(252, 252)" class="key keypos-56">
+<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
+<text x="0" y="0" class="key tap">right</text>
+</g>
+<g transform="translate(700, 252)" class="key keypos-57">
+<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
+<text x="0" y="0" class="key tap">up</text>
+</g>
+<g transform="translate(756, 252)" class="key keypos-58">
+<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
+<text x="0" y="0" class="key tap">down</text>
+</g>
+<g transform="translate(812, 252)" class="key keypos-59">
+<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
+<text x="0" y="0" class="key tap">[</text>
+<text x="0" y="24" class="key hold greek-legend">⟦</text>
+</g>
+<g transform="translate(868, 273)" class="key keypos-60">
+<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
+<text x="0" y="0" class="key tap">]</text>
+<text x="0" y="24" class="key hold greek-legend">⟧</text>
+</g>
+<g transform="translate(924, 273)" class="key keypos-61">
+<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
+</g>
+<g transform="translate(378, 294) rotate(15.0)" class="key mod-greek keypos-62">
+<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key mod-greek"/>
+<text x="0" y="0" class="key mod-greek tap">greek</text>
+</g>
+<g transform="translate(433, 308) rotate(15.0)" class="key keypos-63">
+<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
+<text x="0" y="0" class="key tap">lrld</text>
+</g>
+<g transform="translate(525, 307) rotate(-15.0)" class="key mod-hyper keypos-64">
+<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key mod-hyper"/>
+</g>
+<g transform="translate(579, 292) rotate(-15.0)" class="key mod-top keypos-65">
+<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key mod-top"/>
+<text x="0" y="0" class="key mod-top tap">top</text>
+</g>
+<g transform="translate(303, 361) rotate(15.0)" class="key mod-alt keypos-66">
+<rect rx="6" ry="6" x="-26" y="-54" width="52" height="108" class="key mod-alt"/>
+<text x="0" y="0" class="key mod-alt tap">bspc</text>
+</g>
+<g transform="translate(357, 375) rotate(15.0)" class="key mod-greek keypos-67">
+<rect rx="6" ry="6" x="-26" y="-54" width="52" height="108" class="key mod-greek"/>
+<text x="0" y="0" class="key mod-greek tap">del</text>
+</g>
+<g transform="translate(418, 363) rotate(15.0)" class="key keypos-68">
+<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
+<text x="0" y="0" class="key tap">home</text>
+</g>
+<g transform="translate(404, 417) rotate(15.0)" class="key keypos-69">
+<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
+<text x="0" y="0" class="key tap">end</text>
+<a href="#fun">
+<text x="0" y="24" class="key hold layer-activator">fun</text>
+</a></g>
+<g transform="translate(539, 361) rotate(-15.0)" class="key keypos-70">
+<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
+<text x="0" y="0" class="key tap">pgup</text>
+</g>
+<g transform="translate(554, 415) rotate(-15.0)" class="key keypos-71">
+<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
+<text x="0" y="0" class="key tap">pgdn</text>
+<a href="#fun">
+<text x="0" y="24" class="key hold layer-activator">fun</text>
+</a></g>
+<g transform="translate(601, 374) rotate(-15.0)" class="key mod-top keypos-72">
+<rect rx="6" ry="6" x="-26" y="-54" width="52" height="108" class="key mod-top"/>
+<text x="0" y="0" class="key mod-top tap">ent</text>
+</g>
+<g transform="translate(655, 359) rotate(-15.0)" class="key mod-alt keypos-73">
+<rect rx="6" ry="6" x="-26" y="-54" width="52" height="108" class="key mod-alt"/>
+<text x="0" y="0" class="key mod-alt tap">spc</text>
+</g>
+</g>
+</g>
+<g transform="translate(30, 507)" class="layer-fun">
+<text x="0" y="28" class="label" id="fun">fun:</text>
+<g transform="translate(0, 56)">
+<g transform="translate(28, 49)" class="key keypos-0">
+<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
+</g>
+<g transform="translate(84, 49)" class="key keypos-1">
+<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
+<text x="0" y="0" class="key tap">I</text>
+<text x="0" y="24" class="key hold greek-legend">U2160</text>
+</g>
+<g transform="translate(140, 28)" class="key keypos-2">
+<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
+<text x="0" y="0" class="key tap">II</text>
+<text x="0" y="24" class="key hold greek-legend">U2161</text>
+</g>
+<g transform="translate(196, 28)" class="key keypos-3">
+<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
+<text x="0" y="0" class="key tap">III</text>
+<text x="0" y="24" class="key hold greek-legend">U2162</text>
+</g>
+<g transform="translate(252, 28)" class="key keypos-4">
+<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
+<text x="0" y="0" class="key tap">IV</text>
+<text x="0" y="24" class="key hold greek-legend">U2163</text>
+</g>
+<g transform="translate(308, 28)" class="key keypos-5">
+<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
+</g>
+<g transform="translate(644, 28)" class="key keypos-6">
+<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
+</g>
+<g transform="translate(700, 28)" class="key keypos-7">
+<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
+<text x="0" y="0" class="key tap">
+<tspan x="0" dy="-1.2em">Finger</tspan><tspan x="0" dy="1.2em">Left</tspan>
+</text>
+<text x="0" y="24" class="key hold greek-legend">U261A</text>
+</g>
+<g transform="translate(756, 28)" class="key keypos-8">
+<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
+<text x="0" y="0" class="key tap">
+<tspan x="0" dy="-1.2em">Thumb</tspan><tspan x="0" dy="1.2em">Up</tspan>
+</text>
+<text x="0" y="24" class="key hold greek-legend">U1F44D</text>
+</g>
+<g transform="translate(812, 28)" class="key keypos-9">
+<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
+<text x="0" y="0" class="key tap">
+<tspan x="0" dy="-1.2em">Thumb</tspan><tspan x="0" dy="1.2em">Down</tspan>
+</text>
+<text x="0" y="24" class="key hold greek-legend">U1F44E</text>
+</g>
+<g transform="translate(868, 49)" class="key keypos-10">
+<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
+<text x="0" y="0" class="key tap">
+<tspan x="0" dy="-1.2em">Finger</tspan><tspan x="0" dy="1.2em">Right</tspan>
+</text>
+<text x="0" y="24" class="key hold greek-legend">U261B</text>
+</g>
+<g transform="translate(924, 49)" class="key keypos-11">
+<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
+</g>
+<g transform="translate(28, 105)" class="key keypos-12">
+<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
+</g>
+<g transform="translate(84, 105)" class="key keypos-13">
+<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
+<text x="0" y="0" class="key tap">Quote</text>
+<text x="0" y="24" class="key hold greek-legend">UE002</text>
+</g>
+<g transform="translate(140, 84)" class="key keypos-14">
+<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
+<text x="0" y="0" class="key tap"><tspan style="font-size: 88%">Terminal</tspan></text>
+<text x="0" y="24" class="key hold greek-legend">UE001</text>
+</g>
+<g transform="translate(196, 84)" class="key keypos-15">
+<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
+<text x="0" y="0" class="key tap">Macro</text>
+<text x="0" y="24" class="key hold greek-legend">UE000</text>
+</g>
+<g transform="translate(252, 84)" class="key keypos-16">
+<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
+</g>
+<g transform="translate(308, 84)" class="key keypos-17">
+<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
+<text x="0" y="0" class="key tap">
+<tspan x="0" dy="-1.2em">Over</tspan><tspan x="0" dy="1.2em">Strike</tspan>
+</text>
+<text x="0" y="24" class="key hold greek-legend">UE003</text>
+</g>
+<g transform="translate(364, 84)" class="key keypos-18">
+<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
+</g>
+<g transform="translate(588, 84)" class="key keypos-19">
+<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
+</g>
+<g transform="translate(644, 84)" class="key keypos-20">
+<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
+</g>
+<g transform="translate(700, 84)" class="key keypos-21">
+<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
+<text x="0" y="0" class="key tap">Status</text>
+<text x="0" y="24" class="key hold greek-legend">UE012</text>
+</g>
+<g transform="translate(756, 84)" class="key keypos-22">
+<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
+<text x="0" y="0" class="key tap">Call</text>
+<text x="0" y="24" class="key hold greek-legend">UE00C</text>
+</g>
+<g transform="translate(812, 84)" class="key keypos-23">
+<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
+<text x="0" y="0" class="key tap">
+<tspan x="0" dy="-1.2em">Stop</tspan><tspan x="0" dy="1.2em">Output</tspan>
+</text>
+<text x="0" y="24" class="key hold greek-legend">UE007</text>
+</g>
+<g transform="translate(868, 105)" class="key keypos-24">
+<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
+</g>
+<g transform="translate(924, 105)" class="key keypos-25">
+<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
+</g>
+<g transform="translate(28, 161)" class="key keypos-26">
+<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
+</g>
+<g transform="translate(84, 161)" class="key keypos-27">
+<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
+</g>
+<g transform="translate(140, 140)" class="key keypos-28">
+<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
+<text x="0" y="0" class="key tap">System</text>
+<text x="0" y="24" class="key hold greek-legend">UE00A</text>
+</g>
+<g transform="translate(196, 140)" class="key keypos-29">
+<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
+</g>
+<g transform="translate(252, 140)" class="key keypos-30">
+<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
+</g>
+<g transform="translate(308, 140)" class="key keypos-31">
+<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
+<text x="0" y="0" class="key tap">Abort</text>
+<text x="0" y="24" class="key hold greek-legend">UE008</text>
+</g>
+<g transform="translate(364, 140)" class="key keypos-32">
+<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
+</g>
+<g transform="translate(588, 140)" class="key keypos-33">
+<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
+</g>
+<g transform="translate(644, 140)" class="key keypos-34">
+<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
+<text x="0" y="0" class="key tap">Help</text>
+<text x="0" y="24" class="key hold greek-legend">UE014</text>
+</g>
+<g transform="translate(700, 140)" class="key keypos-35">
+<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
+<text x="0" y="0" class="key tap">Line</text>
+<text x="0" y="24" class="key hold greek-legend">UE013</text>
+</g>
+<g transform="translate(756, 140)" class="key keypos-36">
+<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
+<text x="0" y="0" class="key tap">
+<tspan x="0" dy="-1.2em">Clear</tspan><tspan x="0" dy="1.2em">Input</tspan>
+</text>
+<text x="0" y="24" class="key hold greek-legend">UE004</text>
+</g>
+<g transform="translate(812, 140)" class="key keypos-37">
+<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
+<text x="0" y="0" class="key tap">
+<tspan x="0" dy="-1.2em">Clear</tspan><tspan x="0" dy="1.2em">Screen</tspan>
+</text>
+<text x="0" y="24" class="key hold greek-legend">UE005</text>
+</g>
+<g transform="translate(868, 161)" class="key keypos-38">
+<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
+<text x="0" y="0" class="key tap">End</text>
+<text x="0" y="24" class="key hold greek-legend">UE00D</text>
+</g>
+<g transform="translate(924, 161)" class="key keypos-39">
+<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
+</g>
+<g transform="translate(28, 217)" class="key keypos-40">
+<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
+</g>
+<g transform="translate(84, 217)" class="key keypos-41">
+<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
+<text x="0" y="0" class="key tap">
+<tspan x="0" dy="-1.2em">Hold</tspan><tspan x="0" dy="1.2em">Output</tspan>
+</text>
+<text x="0" y="24" class="key hold greek-legend">UE006</text>
+</g>
+<g transform="translate(140, 196)" class="key keypos-42">
+<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
+<text x="0" y="0" class="key tap">Network</text>
+<text x="0" y="24" class="key hold greek-legend">UE00B</text>
+</g>
+<g transform="translate(196, 196)" class="key keypos-43">
+<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
+<text x="0" y="0" class="key tap">Break</text>
+<text x="0" y="24" class="key hold greek-legend">UE009</text>
+</g>
+<g transform="translate(252, 196)" class="key keypos-44">
+<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
+</g>
+<g transform="translate(308, 196)" class="key keypos-45">
+<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
+</g>
+<g transform="translate(644, 196)" class="key keypos-46">
+<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
+</g>
+<g transform="translate(700, 196)" class="key keypos-47">
+<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
+<text x="0" y="0" class="key tap">Resume</text>
+<text x="0" y="24" class="key hold greek-legend">UE011</text>
+</g>
+<g transform="translate(756, 196)" class="key keypos-48">
+<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
+</g>
+<g transform="translate(812, 196)" class="key keypos-49">
+<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
+<text x="0" y="0" class="key tap">Repeat</text>
+<text x="0" y="24" class="key hold greek-legend">UE00E</text>
+</g>
+<g transform="translate(868, 217)" class="key keypos-50">
+<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
+</g>
+<g transform="translate(924, 217)" class="key keypos-51">
+<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
+</g>
+<g transform="translate(28, 273)" class="key keypos-52">
+<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
+</g>
+<g transform="translate(84, 273)" class="key keypos-53">
+<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
+<text x="0" y="0" class="key tap">
+<tspan x="0" dy="-1.2em">Mode</tspan><tspan x="0" dy="1.2em">Lock</tspan>
+</text>
+<text x="0" y="24" class="key hold greek-legend">UE010</text>
+</g>
+<g transform="translate(140, 252)" class="key keypos-54">
+<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
+<text x="0" y="0" class="key tap">
+<tspan x="0" dy="-1.2em">Alt</tspan><tspan x="0" dy="1.2em">Mode</tspan>
+</text>
+<text x="0" y="24" class="key hold greek-legend">UE00F</text>
+</g>
+<g transform="translate(196, 252)" class="key keypos-55">
+<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
+</g>
+<g transform="translate(252, 252)" class="key keypos-56">
+<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
+</g>
+<g transform="translate(700, 252)" class="key keypos-57">
+<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
+</g>
+<g transform="translate(756, 252)" class="key keypos-58">
+<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
+</g>
+<g transform="translate(812, 252)" class="key keypos-59">
+<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
+</g>
+<g transform="translate(868, 273)" class="key keypos-60">
+<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
+</g>
+<g transform="translate(924, 273)" class="key keypos-61">
+<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
+</g>
+<g transform="translate(378, 294) rotate(15.0)" class="key keypos-62">
+<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
+</g>
+<g transform="translate(433, 308) rotate(15.0)" class="key keypos-63">
+<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
+</g>
+<g transform="translate(525, 307) rotate(-15.0)" class="key keypos-64">
+<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
+</g>
+<g transform="translate(579, 292) rotate(-15.0)" class="key keypos-65">
+<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
+</g>
+<g transform="translate(303, 361) rotate(15.0)" class="key keypos-66">
+<rect rx="6" ry="6" x="-26" y="-54" width="52" height="108" class="key"/>
+</g>
+<g transform="translate(357, 375) rotate(15.0)" class="key keypos-67">
+<rect rx="6" ry="6" x="-26" y="-54" width="52" height="108" class="key"/>
+</g>
+<g transform="translate(418, 363) rotate(15.0)" class="key keypos-68">
+<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
+</g>
+<g transform="translate(404, 417) rotate(15.0)" class="key keypos-69">
+<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
+</g>
+<g transform="translate(539, 361) rotate(-15.0)" class="key keypos-70">
+<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
+</g>
+<g transform="translate(554, 415) rotate(-15.0)" class="key keypos-71">
+<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
+</g>
+<g transform="translate(601, 374) rotate(-15.0)" class="key keypos-72">
+<rect rx="6" ry="6" x="-26" y="-54" width="52" height="108" class="key"/>
+</g>
+<g transform="translate(655, 359) rotate(-15.0)" class="key keypos-73">
+<rect rx="6" ry="6" x="-26" y="-54" width="52" height="108" class="key"/>
+</g>
+</g>
+</g>
+</svg>

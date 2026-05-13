@@ -1,0 +1,305 @@
+layout:
+  qmk_info_json: kinesis.qmk.json
+layers:
+  normal:
+  - t: '='
+    h: ∅
+  - t: '1'
+    h: †
+  - t: '2'
+    h: ‡
+  - t: '3'
+    h: ▿
+  - t: '4'
+    h: ¢
+  - t: '5'
+    h: ○
+  - t: '6'
+    h: ▯
+  - t: '7'
+    h: ÷
+  - t: '8'
+    h: ×
+  - t: '9'
+    h: ¶
+  - t: '0'
+    h: ○
+  - t: '-'
+    h: ≈
+  - tab
+  - t: q
+    h: θ
+    s: ∧
+  - t: w
+    h: ω
+    s: ∨
+  - t: e
+    h: ε
+    s: ∪
+  - t: r
+    h: ρ
+    s: ∩
+  - t: t
+    h: τ
+    s: ⊂
+  - ''
+  - ''
+  - t: y
+    h: ψ
+    s: ⊃
+  - t: u
+    h: υ
+    s: ∀
+  - t: i
+    h: ι
+    s: ∞
+  - t: o
+    h: ο
+    s: ∃
+  - t: p
+    h: π
+    s: ∂
+  - t: \
+    h: ‖
+  - t: esc
+    h: ''
+    type: mod-hyper
+  - t: a
+    h: α
+    type: mod-super
+    s: ⊥
+  - t: s
+    h: σ
+    type: mod-meta
+    s: ⊤
+  - t: d
+    h: δ
+    type: mod-control
+    s: ⊢
+  - t: f
+    h: φ
+    type: mod-shift
+    s: ⊣
+  - t: g
+    h: γ
+    s: ↑
+  - ''
+  - ''
+  - t: h
+    h: η
+    s: ↓
+  - t: j
+    h: ϑ
+    type: mod-shift
+    s: ←
+  - t: k
+    h: κ
+    type: mod-control
+    s: →
+  - t: l
+    h: λ
+    type: mod-meta
+    s: ↔
+  - t: ;
+    h: ¨
+    type: mod-super
+  - t: ''''
+    h: ·
+    type: mod-hyper
+  - t: ''
+    type: mod-shift
+  - t: z
+    h: ζ
+    s: ∨
+  - t: x
+    h: ξ
+    s: ⌊
+  - t: c
+    h: χ
+    s: ⌈
+  - t: v
+    h: ς
+    s: ≃
+  - t: b
+    h: β
+    s: ≡
+  - t: n
+    h: ν
+    s: ≤
+  - t: m
+    h: μ
+    s: ≥
+  - t: ','
+    h: «
+  - t: .
+    h: »
+  - t: /
+    h: ∫
+  - t: ''
+    type: mod-shift
+  - ''
+  - grv
+  - menu
+  - left
+  - right
+  - up
+  - down
+  - t: '['
+    h: ⟦
+  - t: ']'
+    h: ⟧
+  - ''
+  - t: greek
+    type: mod-greek
+  - lrld
+  - t: ''
+    type: mod-hyper
+  - t: top
+    type: mod-top
+  - t: bspc
+    h: ''
+    type: mod-alt
+  - t: del
+    h: ''
+    type: mod-greek
+  - home
+  - t: end
+    h: fun
+  - pgup
+  - t: pgdn
+    h: fun
+  - t: ent
+    h: ''
+    type: mod-top
+  - t: spc
+    h: ''
+    type: mod-alt
+  fun:
+  - ''
+  - t: I
+    h: U2160
+  - t: II
+    h: U2161
+  - t: III
+    h: U2162
+  - t: IV
+    h: U2163
+  - ''
+  - ''
+  - t: Finger Left
+    h: U261A
+  - t: Thumb Up
+    h: U1F44D
+  - t: Thumb Down
+    h: U1F44E
+  - t: Finger Right
+    h: U261B
+  - ''
+  - ''
+  - t: Quote
+    h: UE002
+  - t: Terminal
+    h: UE001
+  - t: Macro
+    h: UE000
+  - ''
+  - t: Over Strike
+    h: UE003
+  - ''
+  - ''
+  - ''
+  - t: Status
+    h: UE012
+  - t: Call
+    h: UE00C
+  - t: Stop Output
+    h: UE007
+  - ''
+  - ''
+  - ''
+  - ''
+  - t: System
+    h: UE00A
+  - ''
+  - ''
+  - t: Abort
+    h: UE008
+  - ''
+  - ''
+  - t: Help
+    h: UE014
+  - t: Line
+    h: UE013
+  - t: Clear Input
+    h: UE004
+  - t: Clear Screen
+    h: UE005
+  - t: End
+    h: UE00D
+  - ''
+  - ''
+  - t: Hold Output
+    h: UE006
+  - t: Network
+    h: UE00B
+  - t: Break
+    h: UE009
+  - ''
+  - ''
+  - ''
+  - t: Resume
+    h: UE011
+  - ''
+  - t: Repeat
+    h: UE00E
+  - ''
+  - ''
+  - ''
+  - t: Mode Lock
+    h: UE010
+  - t: Alt Mode
+    h: UE00F
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+combos: []
+draw_config:
+  combo_w: 52
+  combo_h: 30
+  arc_radius: 6
+  separate_combo_diagrams: false
+  svg_extra_style: 'rect.mod-shift { fill: #eeeeee; stroke: #8c8c8c; }
+
+    rect.mod-control { fill: #fff3bf; stroke: #d9a300; }
+
+    rect.mod-meta { fill: #ffe2e2; stroke: #e03131; }
+
+    rect.mod-super { fill: #d8fbff; stroke: #00a9c8; }
+
+    rect.mod-alt { fill: #dff0ff; stroke: #6aa8df; }
+
+    rect.mod-hyper { fill: #ffd6ff; stroke: #c026d3; }
+
+    rect.mod-greek { fill: #e4f8e7; stroke: #2f9e44; }
+
+    rect.mod-top { fill: #ffe8cc; stroke: #f08c00; }
+
+    text.greek-legend { fill: #1b7f33; font-weight: 700; }
+
+    text.top-legend { fill: #b35f00; font-weight: 700; }'

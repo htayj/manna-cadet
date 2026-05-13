@@ -1,0 +1,508 @@
+layout:
+  qmk_info_json: kinesis.qmk.json
+layers:
+  normal:
+  - t: '='
+    h: ∅
+  - t: '1'
+    h: †
+  - t: '2'
+    h: ‡
+  - t: '3'
+    h: ▿
+  - t: '4'
+    h: ¢
+  - t: '5'
+    h: ○
+  - t: '6'
+    h: ▯
+  - t: '7'
+    h: ÷
+  - t: '8'
+    h: ×
+  - t: '9'
+    h: ¶
+  - t: '0'
+    h: ○
+  - t: '-'
+    h: ≈
+  - tab
+  - t: q
+    h: θ
+    s: ∧
+  - t: w
+    h: ω
+    s: ∨
+  - t: e
+    h: ε
+    s: ∪
+  - t: r
+    h: ρ
+    s: ∩
+  - t: t
+    h: τ
+    s: ⊂
+  - ''
+  - ''
+  - t: y
+    h: ψ
+    s: ⊃
+  - t: u
+    h: υ
+    s: ∀
+  - t: i
+    h: ι
+    s: ∞
+  - t: o
+    h: ο
+    s: ∃
+  - t: p
+    h: π
+    s: ∂
+  - t: \
+    h: ‖
+  - t: esc
+    h: ''
+    type: mod-hyper
+  - t: a
+    h: α
+    type: mod-super
+    s: ⊥
+  - t: s
+    h: σ
+    type: mod-meta
+    s: ⊤
+  - t: d
+    h: δ
+    type: mod-control
+    s: ⊢
+  - t: f
+    h: φ
+    type: mod-shift
+    s: ⊣
+  - t: g
+    h: γ
+    s: ↑
+  - ''
+  - ''
+  - t: h
+    h: η
+    s: ↓
+  - t: j
+    h: ϑ
+    type: mod-shift
+    s: ←
+  - t: k
+    h: κ
+    type: mod-control
+    s: →
+  - t: l
+    h: λ
+    type: mod-meta
+    s: ↔
+  - t: ;
+    h: ¨
+    type: mod-super
+  - t: ''''
+    h: ·
+    type: mod-hyper
+  - t: ''
+    type: mod-shift
+  - t: z
+    h: ζ
+    s: ∨
+  - t: x
+    h: ξ
+    s: ⌊
+  - t: c
+    h: χ
+    s: ⌈
+  - t: v
+    h: ς
+    s: ≃
+  - t: b
+    h: β
+    s: ≡
+  - t: n
+    h: ν
+    s: ≤
+  - t: m
+    h: μ
+    s: ≥
+  - t: ','
+    h: «
+  - t: .
+    h: »
+  - t: /
+    h: ∫
+  - t: ''
+    type: mod-shift
+  - ''
+  - grv
+  - menu
+  - left
+  - right
+  - up
+  - down
+  - t: '['
+    h: ⟦
+  - t: ']'
+    h: ⟧
+  - ''
+  - t: greek
+    type: mod-greek
+  - lrld
+  - t: ''
+    type: mod-hyper
+  - t: top
+    type: mod-top
+  - t: bspc
+    h: ''
+    type: mod-alt
+  - t: del
+    h: ''
+    type: mod-greek
+  - home
+  - end
+  - pgup
+  - pgdn
+  - t: ent
+    h: ''
+    type: mod-top
+  - t: spc
+    h: ''
+    type: mod-alt
+  chords:
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+combos:
+- p:
+  - 1
+  - 2
+  k: I
+  l:
+  - chords
+  a: mid
+  d: false
+- p:
+  - 2
+  - 3
+  k: II
+  l:
+  - chords
+  a: mid
+  d: false
+- p:
+  - 3
+  - 4
+  k: III
+  l:
+  - chords
+  a: mid
+  d: false
+- p:
+  - 4
+  - 5
+  k: IV
+  l:
+  - chords
+  a: mid
+  d: false
+- p:
+  - 6
+  - 7
+  k: Finger Left
+  l:
+  - chords
+  a: mid
+  d: false
+- p:
+  - 7
+  - 8
+  k: Thumb Up
+  l:
+  - chords
+  a: mid
+  d: false
+- p:
+  - 8
+  - 9
+  k: Thumb Down
+  l:
+  - chords
+  a: mid
+  d: false
+- p:
+  - 9
+  - 10
+  k: Finger Right
+  l:
+  - chords
+  a: mid
+  d: false
+- p:
+  - 13
+  - 14
+  k: Macro
+  l:
+  - chords
+  a: mid
+  d: false
+- p:
+  - 14
+  - 15
+  k: Terminal
+  l:
+  - chords
+  a: mid
+  d: false
+- p:
+  - 15
+  - 16
+  k: Quote
+  l:
+  - chords
+  a: mid
+  d: false
+- p:
+  - 16
+  - 17
+  k: Over Strike
+  l:
+  - chords
+  a: mid
+  d: false
+- p:
+  - 17
+  - 20
+  k: Clear Input
+  l:
+  - chords
+  a: mid
+  d: false
+  w: 336
+- p:
+  - 20
+  - 21
+  k: Clear Screen
+  l:
+  - chords
+  a: mid
+  d: false
+- p:
+  - 21
+  - 22
+  k: Hold Output
+  l:
+  - chords
+  a: mid
+  d: false
+- p:
+  - 22
+  - 23
+  k: Stop Output
+  l:
+  - chords
+  a: mid
+  d: false
+- p:
+  - 23
+  - 24
+  k: Abort
+  l:
+  - chords
+  a: mid
+  d: false
+- p:
+  - 24
+  - 25
+  k: Break
+  l:
+  - chords
+  a: mid
+  d: false
+- p:
+  - 28
+  - 29
+  k: System
+  l:
+  - chords
+  a: mid
+  d: false
+- p:
+  - 42
+  - 43
+  k: Network
+  l:
+  - chords
+  a: mid
+  d: false
+- p:
+  - 54
+  - 55
+  k: Alt Mode
+  l:
+  - chords
+  a: mid
+  d: false
+- p:
+  - 53
+  - 54
+  k: Mode Lock
+  l:
+  - chords
+  a: mid
+  d: false
+- p:
+  - 58
+  - 59
+  k: End
+  l:
+  - chords
+  a: mid
+  d: false
+- p:
+  - 35
+  - 36
+  k: Call
+  l:
+  - chords
+  a: mid
+  d: false
+- p:
+  - 31
+  - 34
+  k: Help
+  l:
+  - chords
+  a: mid
+  d: false
+  w: 336
+- p:
+  - 36
+  - 37
+  k: Resume
+  l:
+  - chords
+  a: mid
+  d: false
+- p:
+  - 47
+  - 48
+  k: Repeat
+  l:
+  - chords
+  a: mid
+  d: false
+- p:
+  - 48
+  - 49
+  k: Status
+  l:
+  - chords
+  a: mid
+  d: false
+- p:
+  - 34
+  - 35
+  k: Line
+  l:
+  - chords
+  a: mid
+  d: false
+draw_config:
+  combo_w: 52
+  combo_h: 30
+  arc_radius: 6
+  separate_combo_diagrams: false
+  svg_extra_style: 'rect.mod-shift { fill: #eeeeee; stroke: #8c8c8c; }
+
+    rect.mod-control { fill: #fff3bf; stroke: #d9a300; }
+
+    rect.mod-meta { fill: #ffe2e2; stroke: #e03131; }
+
+    rect.mod-super { fill: #d8fbff; stroke: #00a9c8; }
+
+    rect.mod-alt { fill: #dff0ff; stroke: #6aa8df; }
+
+    rect.mod-hyper { fill: #ffd6ff; stroke: #c026d3; }
+
+    rect.mod-greek { fill: #e4f8e7; stroke: #2f9e44; }
+
+    rect.mod-top { fill: #ffe8cc; stroke: #f08c00; }
+
+    text.greek-legend { fill: #1b7f33; font-weight: 700; }
+
+    text.top-legend { fill: #b35f00; font-weight: 700; }'

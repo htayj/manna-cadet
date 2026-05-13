@@ -1,0 +1,308 @@
+#| --------------------------------------------------------------------------
+
+                         kanata: Kinesis Advantage 2
+
+   Active host: work. Bound to the Advantage 2 evdev node via `linux-dev'
+   below; `kb_setup.sh' picks this file when $HOSTNAME == work.
+
+   The `defsrc' layer below mirrors the Advantage 2's physical layout
+   (single board + thumb clusters; no split). Copy a `deflayer' template
+   to add a new layer with matching `transparent' buttons (`_').
+
+(deflayer name
+  _    _    _    _                             _    _    _    _    _    _    _
+       _    _    _    _    _    _    _    _    _    _    _    _         _    _
+  _    _    _    _    _    _    _    _    _    _    _    _    _         _
+  _    _    _    _    _    _    _    _    _    _    _    _    _         _
+  _    _    _    _    _    _    _    _    _    _    _    _    _
+  _    _    _    _    _    _    _    _    _    _    _    _              _
+  _    _    _    _              _              _    _    _         _    _    _
+                                                                   _    _    _
+)
+  -------------------------------------------------------------------------- |#
+
+
+;; (deflocalkeys-sun
+;;   F18 247
+;; 	F19 138
+;; 	F20 248
+;; 	F21 142)
+;; US
+(defsrc
+  =      1    2    3    4    5    			        6    7    8    9    0    -  
+  tab    q    w    e    r    t                  y    u    i    o    p     \
+  esc    a    s    d    f    g                  h    j    k    l    ;     ' 
+  lshift z    x    c    v    b                  n    m    ,    .    /     rshift
+	       grv  menu left right                   up   down [    ]
+
+             lctl  lalt                rmet rctl
+						       home                pgup
+        bspc del   end                 pgdn ent spc
+ 																																	 
+)
+
+;; press both to latch?
+(defalias
+  ;; homerow mod
+  Sf (tap-hold-release 200 200 f lshift)       ;; left homerow shift
+  Cd (tap-hold-release 200 200 d lctl)         ;; left homerow ctrl
+  Ms (tap-hold-release 200 200 s lalt)         ;; left homerow meta
+  sa (tap-hold-release 250 250 a lmet)         ;; left homehow super
+  Sj (tap-hold-release 200 200 j lshift)       ;; right homerow shift
+  Ck (tap-hold-release 200 200 k lctl)         ;; right homerow ctrl
+  Ml (tap-hold-release 200 200 l lalt)         ;; right homerow meta
+  s; (tap-hold-release 200 200 ; lmet)         ;; right homerow super
+  Hro (tap-hold-release 200 200 bspc ralt)     ;; left thumb alt
+  Hsp (tap-hold-release 200 200 spc  ralt)     ;; right thumb alt
+;;  Tr (tap-next-release r (layer-toggle top))         ;; left homerow top
+;;  Tu (tap-next-release u (layer-toggle top))         ;; right homerow super
+  ;; other mod keys
+  eoam (tap-hold-release 200 200 esc rmet)    ;; escape / hyper mode
+  qoam (tap-hold-release 200 200 ' rmet)       ;; quote / hyper mode
+  osft (tap-hold-release 200 200 0 lshift)    ;; open round / shift
+  csft (tap-hold-release 200 200 0 rshift)    ;; close round / shift
+
+  ;; greek
+	gr  (arbitrary-code 85) ;; modeswitch
+	top (arbitrary-code 84) ;; iso level 3
+	rtop (tap-hold-release 200 200 ent @top)
+	gdel (tap-hold-release 200 200 del @gr)
+
+  ;; Space Cadet command keysyms (emitted via spare evdev keycodes;
+  ;; the XKB layout maps each keycode to the actual command keysym).
+	sc-macro       (arbitrary-code 183) ;; -> UE000
+	sc-terminal    (arbitrary-code 184) ;; -> UE001
+	sc-quote       (arbitrary-code 185) ;; -> UE002
+	sc-overstrike  (arbitrary-code 186) ;; -> UE003
+	sc-clearinput  (arbitrary-code 187) ;; -> UE004
+	sc-clearscreen (arbitrary-code 188) ;; -> UE005
+	sc-holdoutput  (arbitrary-code 189) ;; -> UE006
+	sc-stopoutput  (arbitrary-code 190) ;; -> UE007
+	sc-abort       (arbitrary-code 191) ;; -> UE008
+	sc-break       (arbitrary-code 192) ;; -> UE009
+	sc-system      (arbitrary-code 195) ;; -> UE00A
+	sc-network     (arbitrary-code 196) ;; -> UE00B
+	sc-call        (arbitrary-code 194) ;; -> UE00C
+	sc-end         (arbitrary-code 240) ;; -> UE00D
+	sc-i           (arbitrary-code 218) ;; -> U2160
+	sc-ii          (arbitrary-code 219) ;; -> U2161
+	sc-iii         (arbitrary-code 220) ;; -> U2162
+	sc-iv          (arbitrary-code 221) ;; -> U2163
+	sc-fingerleft  (arbitrary-code 222) ;; -> U261A
+	sc-thumbup     (arbitrary-code 223) ;; -> U1F44D
+	sc-thumbdown   (arbitrary-code 224) ;; -> U1F44E
+	sc-fingerright (arbitrary-code 225) ;; -> U261B
+	sc-repeat      (arbitrary-code 226) ;; -> UE00E
+	sc-altmode     (arbitrary-code 211) ;; -> UE00F
+	sc-modelock    (arbitrary-code 212) ;; -> UE010
+	sc-resume      (arbitrary-code 193) ;; -> UE011
+	sc-status      (arbitrary-code 197) ;; -> UE012
+	sc-line        (arbitrary-code 198) ;; -> UE013
+	sc-help        (arbitrary-code 199) ;; KEY_HELP -> UE014
+)
+
+(defchordsv2
+  (1 2)       @sc-i           45 first-release ()
+  (2 3)       @sc-ii          45 first-release ()
+  (3 4)       @sc-iii         45 first-release ()
+  (4 5)       @sc-iv          45 first-release ()
+  (6 7)       @sc-fingerleft  45 first-release ()
+  (7 8)       @sc-thumbup     45 first-release ()
+  (8 9)       @sc-thumbdown   45 first-release ()
+  (9 0)       @sc-fingerright 45 first-release ()
+  (q w)       @sc-macro       45 first-release ()
+  (w e)       @sc-terminal    45 first-release ()
+  (e r)       @sc-quote       45 first-release ()
+  (r t)       @sc-overstrike  45 first-release ()
+  (t y)       @sc-clearinput  45 first-release ()
+  (y u)       @sc-clearscreen 45 first-release ()
+  (u i)       @sc-holdoutput  45 first-release ()
+  (i o)       @sc-stopoutput  45 first-release ()
+  (o p)       @sc-abort       45 first-release ()
+  (p \)       @sc-break       45 first-release ()
+  (s d)       @sc-system      45 first-release ()
+  (x c)       @sc-network     45 first-release ()
+  (menu left) @sc-altmode     45 first-release ()
+  (grv menu)  @sc-modelock    45 first-release ()
+  (down [)    @sc-end         45 first-release ()
+  (j k)       @sc-call        45 first-release ()
+  (g h)       @sc-help        45 first-release ()
+  (k l)       @sc-resume      45 first-release ()
+  (m ,)       @sc-repeat      45 first-release ()
+  (, .)       @sc-status      45 first-release ()
+  (h j)       @sc-line        45 first-release ()
+)
+(deflayer normal
+  =      1    2    3    4    5    	    		6    7    8    9    0    -  
+  tab    q    w    e    r    t              y    u    i    o    p     \
+  @eoam  @sa  @Ms  @Cd  @Sf  g              h    @Sj  @Ck  @Ml  @s;   @qoam
+  lshift z    x    c    v    b              n    m    ,    .    /     rshift
+	       grv  menu left right               up   down [    ]
+
+                  @gr   lrld                rmet  @top
+		     			          home                pgup
+             @Hro @gdel end                 pgdn  @rtop @Hsp
+)
+;;(deflayer modelatch)
+;; (deflayer greek
+;;   esc  mute vold volu                          prnt slck pause home end ins del  
+;;         f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11   f12     
+;;   grv   1    2    3    4    5    6    7    8    9    0    -     =        bspc
+;;   tab   q    w    e    r    t    y    u    i    o    p    [     ]        \
+;;   @roam @sa  @Ms  @Cd  @Sf  g    h    @Sj  @Ck  @Ml  @s;  @qoam          ret
+;;   @osf  z    x    c    v    b    n    m    ,    .    /                  @csft
+;;   wkup  lctl lmet lalt           spc            ralt cmps rctl      pgup up   pgdn
+;;                                                                    left down rght
+;; )
+;;(deflayer top)
+(defcfg
+   linux-dev /dev/input/by-id/usb-Kinesis_Advantage2_Keyboard_314159265359-if01-event-kbd
+    process-unmapped-keys yes
+    concurrent-tap-hold yes)
+
+;; I have the following mappings in kinesis profile
+;; [HK1]>[app]
+;; [HK2]>[kh76]
+;; [HK3]>[kh9A]
+;; [HK4]>[kh74]
+
+#| --------------------------------------------------------------------------
+{
+  "id": "corne",
+  "name": "Corne",
+  "layouts": {
+    "default_transform": {
+      "name": "default_transform",
+      "layout": [
+        { "row": 0, "col":  0, "x":     0, "y": 0.375 },
+        { "row": 0, "col":  1, "x":     1, "y": 0.375 },
+        { "row": 0, "col":  2, "x":     2, "y": 0 },
+        { "row": 0, "col":  3, "x":     3, "y": 0 },
+        { "row": 0, "col":  4, "x":     4, "y": 0 },
+        { "row": 0, "col":  5, "x":     5, "y": 0 },
+        { "row": 0, "col":  9, "x":    11, "y": 0 },
+        { "row": 0, "col": 10, "x":    12, "y": 0 },
+        { "row": 0, "col": 11, "x":    13, "y": 0 },
+        { "row": 0, "col": 12, "x":    14, "y": 0 },
+        { "row": 0, "col": 13, "x":    15, "y": 0.375 },
+        { "row": 0, "col": 14, "x":    16, "y": 0.375 },
+      
+        { "row": 1, "col":  0, "x":     0, "y": 1.375 },
+        { "row": 1, "col":  1, "x":     1, "y": 1.375 },
+        { "row": 1, "col":  2, "x":     2, "y": 1 },
+        { "row": 1, "col":  3, "x":     3, "y": 1 },
+        { "row": 1, "col":  4, "x":     4, "y": 1 },
+        { "row": 1, "col":  5, "x":     5, "y": 1 },
+        { "row": 1, "col":  6, "x":     6, "y": 1 },
+        { "row": 1, "col":  8, "x":    10, "y": 1 },
+        { "row": 1, "col":  9, "x":    11, "y": 1 },
+        { "row": 1, "col": 10, "x":    12, "y": 1 },
+        { "row": 1, "col": 11, "x":    13, "y": 1 },
+        { "row": 1, "col": 12, "x":    14, "y": 1 },
+        { "row": 1, "col": 13, "x":    15, "y": 1.375 },
+        { "row": 1, "col": 14, "x":    16, "y": 1.375 },
+      
+        { "row": 2, "col":  0, "x":     0, "y": 2.375 },
+        { "row": 2, "col":  1, "x":     1, "y": 2.375 },
+        { "row": 2, "col":  2, "x":     2, "y": 2 },
+        { "row": 2, "col":  3, "x":     3, "y": 2 },
+        { "row": 2, "col":  4, "x":     4, "y": 2 },
+        { "row": 2, "col":  5, "x":     5, "y": 2 },
+        { "row": 2, "col":  6, "x":     6, "y": 2 },
+        { "row": 2, "col":  8, "x":    10, "y": 2 },
+        { "row": 2, "col":  9, "x":    11, "y": 2 },
+        { "row": 2, "col": 10, "x":    12, "y": 2 },
+        { "row": 2, "col": 11, "x":    13, "y": 2 },
+        { "row": 2, "col": 12, "x":    14, "y": 2 },
+        { "row": 2, "col": 13, "x":    15, "y": 2.375 },
+        { "row": 2, "col": 14, "x":    16, "y": 2.375 },
+      
+        { "row": 3, "col":  0, "x":     0, "y": 3.375 },
+        { "row": 3, "col":  1, "x":     1, "y": 3.375 },
+        { "row": 3, "col":  2, "x":     2, "y": 3 },
+        { "row": 3, "col":  3, "x":     3, "y": 3 },
+        { "row": 3, "col":  4, "x":     4, "y": 3 },
+        { "row": 3, "col":  5, "x":     5, "y": 3 },
+        { "row": 3, "col":  9, "x":    11, "y": 3 },
+        { "row": 3, "col": 10, "x":    12, "y": 3 },
+        { "row": 3, "col": 11, "x":    13, "y": 3 },
+        { "row": 3, "col": 12, "x":    14, "y": 3 },
+        { "row": 3, "col": 13, "x":    15, "y": 3.375 },
+        { "row": 3, "col": 14, "x":    16, "y": 3.375 },
+        
+        { "row": 4, "col":  0, "x":     0, "y": 4.375 },
+        { "row": 4, "col":  1, "x":     1, "y": 4.375 },
+        { "row": 4, "col":  2, "x":     2, "y": 4 },
+        { "row": 4, "col":  3, "x":     3, "y": 4 },
+        { "row": 4, "col":  4, "x":     4, "y": 4 },
+        { "row": 4, "col": 10, "x":    12, "y": 4 },
+        { "row": 4, "col": 11, "x":    13, "y": 4 },
+        { "row": 4, "col": 12, "x":    14, "y": 4 },
+        { "row": 4, "col": 13, "x":    15, "y": 4.375 },
+        { "row": 4, "col": 14, "x":    16, "y": 4.375 },
+      
+        { "row": 6, "col":  5, "x":  5.48, "y": 4.125, "r":  15, "rx":  4, "ry": 7.895 },
+        { "row": 6, "col":  6, "x":  6.48, "y": 4.125, "r":  15, "rx":  4, "ry": 7.895 },
+        
+        { "row": 6, "col":  8, "x":  9.62, "y": 4.125,  "r": -15, "rx": 13, "ry": 7.895},
+        { "row": 6, "col":  9, "x":  10.62, "y": 4.125,  "r": -15, "rx": 13, "ry": 7.895 },
+        
+        { "row": 7, "col":  4, "x":  4.48, "y": 5.125, "r":  15, "rx":  4, "ry": 7.895, "h": 2  },
+        { "row": 7, "col":  5, "x":  5.48, "y": 5.125, "r":  15, "rx":  4, "ry": 7.895, "h": 2  },
+        { "row": 7, "col":  6, "x":  6.48, "y": 5.125, "r":  15, "rx":  4, "ry": 7.895 },
+        { "row": 7, "col":  6, "x":  6.48, "y": 6.125, "r":  15, "rx":  4, "ry": 7.895 },
+        
+        { "row": 7, "col":  8, "x":  9.62, "y": 5.125, "r":  -15, "rx":  13, "ry": 7.895 },
+        { "row": 7, "col":  8, "x":  9.62, "y": 6.125, "r":  -15, "rx":  13, "ry": 7.895 },
+        { "row": 7, "col":  9, "x":  10.62, "y": 5.125, "r":  -15, "rx":  13, "ry": 7.895, "h": 2 },
+        { "row": 7, "col":  10, "x": 11.62, "y": 5.125, "r": -15, "rx": 13, "ry": 7.895, "h": 2 }
+      ]
+    },
+    "five_column_transform": {
+      "name": "five_column_transform",
+      "layout": [
+        { "row": 0, "col":  1, "x":    0, "y": 0.375 },
+        { "row": 0, "col":  2, "x":    1, "y": 0.125 },
+        { "row": 0, "col":  3, "x":    2, "y":     0 },
+        { "row": 0, "col":  4, "x":    3, "y": 0.125 },
+        { "row": 0, "col":  5, "x":    4, "y":  0.25 },
+        { "row": 0, "col":  7, "x":    8, "y":  0.25 },
+        { "row": 0, "col":  8, "x":    9, "y": 0.125 },
+        { "row": 0, "col":  9, "x":   10, "y":     0 },
+        { "row": 0, "col": 10, "x":   11, "y": 0.125 },
+        { "row": 0, "col": 11, "x":   12, "y": 0.375 },
+      
+        { "row": 1, "col":  1, "x":    0, "y": 1.375 },
+        { "row": 1, "col":  2, "x":    1, "y": 1.125 },
+        { "row": 1, "col":  3, "x":    2, "y":     1 },
+        { "row": 1, "col":  4, "x":    3, "y": 1.125 },
+        { "row": 1, "col":  5, "x":    4, "y":  1.25 },
+        { "row": 1, "col":  7, "x":    8, "y":  1.25 },
+        { "row": 1, "col":  8, "x":    9, "y": 1.125 },
+        { "row": 1, "col":  9, "x":   10, "y":     1 },
+        { "row": 1, "col": 10, "x":   11, "y": 1.125 },
+        { "row": 1, "col": 11, "x":   12, "y": 1.375 },
+      
+        { "row": 2, "col":  1, "x":    0, "y": 2.375 },
+        { "row": 2, "col":  2, "x":    1, "y": 2.125 },
+        { "row": 2, "col":  3, "x":    2, "y":     2 },
+        { "row": 2, "col":  4, "x":    3, "y": 2.125 },
+        { "row": 2, "col":  5, "x":    4, "y":  2.25 },
+        { "row": 2, "col":  7, "x":    8, "y":  2.25 },
+        { "row": 2, "col":  8, "x":    9, "y": 2.125 },
+        { "row": 2, "col":  9, "x":   10, "y":     2 },
+        { "row": 2, "col": 10, "x":   11, "y": 2.125 },
+        { "row": 2, "col": 11, "x":   12, "y": 2.375 },
+      
+        { "row": 3, "col":  3, "x": 2.48, "y": 3.125, "r":   0 },
+        { "row": 3, "col":  4, "x": 2.48, "y": 3.125, "r":  15, "rx":  2.98, "ry": 7.895 },
+        { "row": 3, "col":  5, "x": 2.48, "y": 2.625, "r":  30, "rx":  2.98, "ry": 7.895, "h": 1.5 },
+        { "row": 3, "col":  7, "x": 9.52, "y": 2.625, "r": -30, "rx": 10.02, "ry": 7.895, "h": 1.5 },
+        { "row": 3, "col":  8, "x": 9.52, "y": 3.125, "r": -15, "rx": 10.02, "ry": 7.895 },
+        { "row": 3, "col":  9, "x": 9.52, "y": 3.125 }
+      ]
+    }
+  },
+  "sensors": []
+}
+-------------------------------------------------------------------------- |#

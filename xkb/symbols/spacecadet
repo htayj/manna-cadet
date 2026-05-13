@@ -1,0 +1,401 @@
+// User-level Space Cadet XKB layout.
+//
+// Layer model (after group restructure):
+//
+//   Group 1 (default), FOUR_LEVEL[_ALPHABETIC]:
+//     level 1 = base (us)
+//     level 2 = Shift
+//     level 3 = Greek / typographic     (held: <ZEHA>, ISO_Level3_Shift -> Mod5)
+//     level 4 = Shift + Greek
+//
+//   Group 2, TWO_LEVEL:
+//     level 1 = Top / math               (held: <LVL3>/<LVL5>, Mode_switch -> SetGroup +1)
+//     level 2 = Shift + Top              (mostly NoSymbol)
+//
+// Why groups instead of EIGHT_LEVEL: switching groups via Mode_switch is a
+// SetGroup action, not SetMods, so it does NOT need its emitting key in
+// modifier_map. That frees Mod3 for an actual modifier (Alt) without losing
+// access to the Top layer.
+//
+// Modifier slot layout (final, after resolving inherited bindings):
+//   Lock: <CAPS> (Caps_Lock, latch behaviour from compat/caps)
+//   Mod1: Super_L (LWIN)
+//   Mod2: Hyper_L (RWIN)
+//   Mod3: Meta_L  (LALT, thumb Alt; Emacs uses as Meta)
+//   Mod4: Alt_L   (RALT) -- stumpwm hard-uses Mod4 as its WM modifier
+//   Mod5: ISO_Level3_Shift (ZEHA) -- Greek layer trigger
+//
+// Space Cadet command-key vocabulary (no physical binding yet -- assign
+// via 'key <SOMEALIAS> { ... [ KEYSYM ] }' or kanata 'arbitrary-code'
+// when wiring a physical position to the function):
+//
+//   Name           XKB keysym         Note
+//   --------------------------------------------------------------------
+//   macro          XF86Tools          (no exact match; F13 also reasonable)
+//   terminal       XF86Terminal
+//   quote          Multi_key          (Compose = literally "quote next")
+//   over-strike    Insert             (toggle insert/overwrite)
+//   clear-input    Clear              (XK_Clear)
+//   clear-screen   XF86Reload         (no exact; F14 also reasonable)
+//   hold-output    Pause              (or ScrollLock; XK_Pause halts xterm)
+//   stop-output    XF86Stop
+//   abort          Cancel             (XK_Cancel)
+//   break          Break              (XK_Break)
+//   resume         XF86AudioPlay      (no exact; F15 also reasonable)
+//   call           XF86Phone
+//   system         XF86Setup          (distinct from <MENU>, which already
+//                                     emits the standard Menu keysym)
+//   status         XF86Display        (no exact; F16 also reasonable)
+//   network        XF86RotateWindows  (no exact; F17 also reasonable)
+//   delete         Delete
+//   alt-mode       ISO_Group_Latch    (sticky group shift)
+//   mode-lock      ISO_Group_Lock     (toggle to next group)
+//   line           Linefeed
+//   help           Help
+//
+//   I              U2160              (Ⅰ)
+//   II             U2161              (Ⅱ)
+//   III            U2162              (Ⅲ)
+//   IV             U2163              (Ⅳ)
+//   thumbsup       U1F44D             (👍)
+//   thumbsdown     U1F44E             (👎)
+//   fingerleft     U261A              (☚)
+//   fingerright    U261B              (☛)
+
+partial alphanumeric_keys modifier_keys
+xkb_symbols "base" {
+    include "us(basic)"
+
+    name[Group1] = "Space Cadet";
+    name[Group2] = "Space Cadet Top";
+
+    // Function keys -- pc symbols normally defines these; we drop pc to
+    // keep its keysym-based modifier_map (Alt_*/Meta_* -> Mod1) from
+    // hijacking our Mod1 assignments, so we have to declare F1-F24 here.
+    key <FK01> { type="ONE_LEVEL", [ F1 ] };
+    key <FK02> { type="ONE_LEVEL", [ F2 ] };
+    key <FK03> { type="ONE_LEVEL", [ F3 ] };
+    key <FK04> { type="ONE_LEVEL", [ F4 ] };
+    key <FK05> { type="ONE_LEVEL", [ F5 ] };
+    key <FK06> { type="ONE_LEVEL", [ F6 ] };
+    key <FK07> { type="ONE_LEVEL", [ F7 ] };
+    key <FK08> { type="ONE_LEVEL", [ F8 ] };
+    key <FK09> { type="ONE_LEVEL", [ F9 ] };
+    key <FK10> { type="ONE_LEVEL", [ F10 ] };
+    key <FK11> { type="ONE_LEVEL", [ F11 ] };
+    key <FK12> { type="ONE_LEVEL", [ F12 ] };
+    key <FK13> { type="ONE_LEVEL", [ F13 ] };
+    key <FK14> { type="ONE_LEVEL", [ F14 ] };
+    key <FK15> { type="ONE_LEVEL", [ F15 ] };
+    key <FK16> { type="ONE_LEVEL", [ F16 ] };
+    key <FK17> { type="ONE_LEVEL", [ F17 ] };
+    key <FK18> { type="ONE_LEVEL", [ F18 ] };
+    key <FK19> { type="ONE_LEVEL", [ F19 ] };
+    key <FK20> { type="ONE_LEVEL", [ F20 ] };
+    key <FK21> { type="ONE_LEVEL", [ F21 ] };
+    key <FK22> { type="ONE_LEVEL", [ F22 ] };
+    key <FK23> { type="ONE_LEVEL", [ F23 ] };
+    key <FK24> { type="ONE_LEVEL", [ F24 ] };
+
+    // Space Cadet command keysyms on spare evdev/F-key keycodes. The kanata
+    // chord aliases (@sc-*) emit these keycodes via arbitrary-code. XKB maps
+    // them to private-use keysyms (UE000...) so desktops do not treat them as
+    // media/power/system keys.
+    key <I191> { type="ONE_LEVEL", [ UE000 ] };  // macro
+    key <I192> { type="ONE_LEVEL", [ UE001 ] };  // terminal
+    key <I193> { type="ONE_LEVEL", [ UE002 ] };  // quote
+    key <I194> { type="ONE_LEVEL", [ UE003 ] };  // over-strike
+    key <I195> { type="ONE_LEVEL", [ UE004 ] };  // clear-input
+    key <I196> { type="ONE_LEVEL", [ UE005 ] };  // clear-screen
+    key <I197> { type="ONE_LEVEL", [ UE006 ] };  // hold-output
+    key <I198> { type="ONE_LEVEL", [ UE007 ] };  // stop-output
+    key <I199> { type="ONE_LEVEL", [ UE008 ] };  // abort
+    key <I200> { type="ONE_LEVEL", [ UE009 ] };  // break
+    key <I201> { type="ONE_LEVEL", [ UE011 ] };  // resume
+    key <I202> { type="ONE_LEVEL", [ UE00C ] };  // call
+    key <I203> { type="ONE_LEVEL", [ UE00A ] };  // system
+    key <I204> { type="ONE_LEVEL", [ UE00B ] };  // network
+    key <I205> { type="ONE_LEVEL", [ UE012 ] };  // status
+    key <I206> { type="ONE_LEVEL", [ UE013 ] };  // line
+    key <I207> { type="ONE_LEVEL", [ UE014 ] };  // help
+    key <I248> { type="ONE_LEVEL", [ UE00D ] };  // end
+    key <I226> { type="ONE_LEVEL", [ U2160 ] };  // I
+    key <I227> { type="ONE_LEVEL", [ U2161 ] };  // II
+    key <I228> { type="ONE_LEVEL", [ U2162 ] };  // III
+    key <I229> { type="ONE_LEVEL", [ U2163 ] };  // IV
+    key <I230> { type="ONE_LEVEL", [ U261A ] };  // finger-left
+    key <I231> { type="ONE_LEVEL", [ U1F44D ] }; // thumb-up
+    key <I232> { type="ONE_LEVEL", [ U1F44E ] }; // thumb-down
+    key <I233> { type="ONE_LEVEL", [ U261B ] };  // finger-right
+    key <I234> { type="ONE_LEVEL", [ UE00E ] };  // repeat
+    key <I219> { type="ONE_LEVEL", [ UE00F ] };  // alt-mode
+    key <I220> { type="ONE_LEVEL", [ UE010 ] };  // mode-lock
+
+    key <ESC>  { type="ONE_LEVEL", [ Escape ] };
+    key <LFSH> { type="ONE_LEVEL", [ Shift_L ] };
+    key <RTSH> { type="ONE_LEVEL", [ Shift_R ] };
+    key <MENU> { type="ONE_LEVEL", [ Menu ] };
+    key <PRSC> { type="PC_ALT_LEVEL2", [ Print, Sys_Req ] };
+    key <SCLK> { type="ONE_LEVEL", [ Scroll_Lock ] };
+    key <PAUS> { type="PC_CONTROL_LEVEL2", [ Pause, Break ] };
+    key <INS>  { type="ONE_LEVEL", [ UE003 ] };
+    key <DELE> { type="ONE_LEVEL", [ Delete ] };
+    key <HOME> { type="ONE_LEVEL", [ Home ] };
+    key <END>  { type="ONE_LEVEL", [ UE00D ] };
+    key <PGUP> { type="ONE_LEVEL", [ Prior ] };
+    key <PGDN> { type="ONE_LEVEL", [ Next ] };
+    key <UP>   { type="ONE_LEVEL", [ Up ] };
+    key <DOWN> { type="ONE_LEVEL", [ Down ] };
+    key <LEFT> { type="ONE_LEVEL", [ Left ] };
+    key <RGHT> { type="ONE_LEVEL", [ Right ] };
+    key <NMLK> { type="ONE_LEVEL", [ Num_Lock ] };
+    key <MUHE> { type="ONE_LEVEL", [ Muhenkan ] };
+    key <HENK> { type="ONE_LEVEL", [ Henkan ] };
+    key <HKTG> { type="ONE_LEVEL", [ Hiragana_Katakana ] };
+    key <HIRA> { type="ONE_LEVEL", [ Hiragana ] };
+    key <KATA> { type="ONE_LEVEL", [ Katakana ] };
+    key <HNGL> { type="ONE_LEVEL", [ Hangul ] };
+    key <HJCV> { type="ONE_LEVEL", [ Hangul_Hanja ] };
+
+    key <AE01> {
+        type[Group1]="FOUR_LEVEL", symbols[Group1]=[ 1, exclam, dagger, NoSymbol ],
+        type[Group2]="TWO_LEVEL",  symbols[Group2]=[ NoSymbol, NoSymbol ]
+    };
+    key <AE02> {
+        type[Group1]="FOUR_LEVEL", symbols[Group1]=[ 2, at, doubledagger, NoSymbol ],
+        type[Group2]="TWO_LEVEL",  symbols[Group2]=[ NoSymbol, NoSymbol ]
+    };
+    key <AE03> {
+        type[Group1]="FOUR_LEVEL", symbols[Group1]=[ 3, numbersign, opentribulletdown, NoSymbol ],
+        type[Group2]="TWO_LEVEL",  symbols[Group2]=[ NoSymbol, NoSymbol ]
+    };
+    key <AE04> {
+        type[Group1]="FOUR_LEVEL", symbols[Group1]=[ 4, dollar, cent, NoSymbol ],
+        type[Group2]="TWO_LEVEL",  symbols[Group2]=[ NoSymbol, NoSymbol ]
+    };
+    key <AE05> {
+        type[Group1]="FOUR_LEVEL", symbols[Group1]=[ 5, percent, circle, NoSymbol ],
+        type[Group2]="TWO_LEVEL",  symbols[Group2]=[ NoSymbol, NoSymbol ]
+    };
+    key <AE06> {
+        type[Group1]="FOUR_LEVEL", symbols[Group1]=[ 6, asciicircum, U25AF, NoSymbol ],
+        type[Group2]="TWO_LEVEL",  symbols[Group2]=[ NoSymbol, NoSymbol ]
+    };
+    key <AE07> {
+        type[Group1]="FOUR_LEVEL", symbols[Group1]=[ 7, ampersand, division, NoSymbol ],
+        type[Group2]="TWO_LEVEL",  symbols[Group2]=[ NoSymbol, NoSymbol ]
+    };
+    key <AE08> {
+        type[Group1]="FOUR_LEVEL", symbols[Group1]=[ 8, asterisk, multiply, NoSymbol ],
+        type[Group2]="TWO_LEVEL",  symbols[Group2]=[ NoSymbol, NoSymbol ]
+    };
+    key <AE09> {
+        type[Group1]="FOUR_LEVEL", symbols[Group1]=[ 9, parenleft, paragraph, NoSymbol ],
+        type[Group2]="TWO_LEVEL",  symbols[Group2]=[ NoSymbol, NoSymbol ]
+    };
+    key <AE10> {
+        type[Group1]="FOUR_LEVEL", symbols[Group1]=[ 0, parenright, emopencircle, NoSymbol ],
+        type[Group2]="TWO_LEVEL",  symbols[Group2]=[ NoSymbol, NoSymbol ]
+    };
+    key <AE11> {
+        type[Group1]="FOUR_LEVEL", symbols[Group1]=[ minus, underscore, U2248, NoSymbol ],
+        type[Group2]="TWO_LEVEL",  symbols[Group2]=[ NoSymbol, NoSymbol ]
+    };
+    key <AE12> {
+        type[Group1]="FOUR_LEVEL", symbols[Group1]=[ equal, plus, U2205, NoSymbol ],
+        type[Group2]="TWO_LEVEL",  symbols[Group2]=[ NoSymbol, NoSymbol ]
+    };
+    key <BKSP> {
+        type[Group1]="FOUR_LEVEL", symbols[Group1]=[ BackSpace, BackSpace, BackSpace, BackSpace ],
+        type[Group2]="TWO_LEVEL",  symbols[Group2]=[ BackSpace, BackSpace ]
+    };
+    key <TAB>  {
+        type[Group1]="FOUR_LEVEL", symbols[Group1]=[ Tab, ISO_Left_Tab, Tab, ISO_Left_Tab ],
+        type[Group2]="TWO_LEVEL",  symbols[Group2]=[ Tab, ISO_Left_Tab ]
+    };
+
+    key <AD01> {
+        type[Group1]="FOUR_LEVEL_ALPHABETIC", symbols[Group1]=[ q, Q, Greek_theta, Greek_THETA ],
+        type[Group2]="TWO_LEVEL",             symbols[Group2]=[ upcaret, NoSymbol ]
+    };
+    key <AD02> {
+        type[Group1]="FOUR_LEVEL_ALPHABETIC", symbols[Group1]=[ w, W, Greek_omega, Greek_OMEGA ],
+        type[Group2]="TWO_LEVEL",             symbols[Group2]=[ downcaret, NoSymbol ]
+    };
+    key <AD03> {
+        type[Group1]="FOUR_LEVEL_ALPHABETIC", symbols[Group1]=[ e, E, Greek_epsilon, Greek_EPSILON ],
+        type[Group2]="TWO_LEVEL",             symbols[Group2]=[ downshoe, NoSymbol ]
+    };
+    key <AD04> {
+        type[Group1]="FOUR_LEVEL_ALPHABETIC", symbols[Group1]=[ r, R, Greek_rho, Greek_RHO ],
+        type[Group2]="TWO_LEVEL",             symbols[Group2]=[ upshoe, NoSymbol ]
+    };
+    key <AD05> {
+        type[Group1]="FOUR_LEVEL_ALPHABETIC", symbols[Group1]=[ t, T, Greek_tau, Greek_TAU ],
+        type[Group2]="TWO_LEVEL",             symbols[Group2]=[ leftshoe, NoSymbol ]
+    };
+    key <AD06> {
+        type[Group1]="FOUR_LEVEL_ALPHABETIC", symbols[Group1]=[ y, Y, Greek_psi, Greek_PSI ],
+        type[Group2]="TWO_LEVEL",             symbols[Group2]=[ rightshoe, NoSymbol ]
+    };
+    key <AD07> {
+        type[Group1]="FOUR_LEVEL_ALPHABETIC", symbols[Group1]=[ u, U, Greek_upsilon, Greek_UPSILON ],
+        type[Group2]="TWO_LEVEL",             symbols[Group2]=[ U2200, NoSymbol ]
+    };
+    key <AD08> {
+        type[Group1]="FOUR_LEVEL_ALPHABETIC", symbols[Group1]=[ i, I, Greek_iota, Greek_IOTA ],
+        type[Group2]="TWO_LEVEL",             symbols[Group2]=[ infinity, NoSymbol ]
+    };
+    key <AD09> {
+        type[Group1]="FOUR_LEVEL_ALPHABETIC", symbols[Group1]=[ o, O, Greek_omicron, Greek_OMICRON ],
+        type[Group2]="TWO_LEVEL",             symbols[Group2]=[ U2203, NoSymbol ]
+    };
+    key <AD10> {
+        type[Group1]="FOUR_LEVEL_ALPHABETIC", symbols[Group1]=[ p, P, Greek_pi, Greek_PI ],
+        type[Group2]="TWO_LEVEL",             symbols[Group2]=[ partialderivative, NoSymbol ]
+    };
+    key <AD11> {
+        type[Group1]="FOUR_LEVEL", symbols[Group1]=[ bracketleft, braceleft, U27E6, U2983 ],
+        type[Group2]="TWO_LEVEL", symbols[Group2]=[ NoSymbol, NoSymbol ]
+    };
+    key <AD12> {
+        type[Group1]="FOUR_LEVEL", symbols[Group1]=[ bracketright, braceright, U27E7, U2984 ],
+        type[Group2]="TWO_LEVEL", symbols[Group2]=[ NoSymbol, NoSymbol ]
+    };
+    key <RTRN> {
+        type[Group1]="FOUR_LEVEL", symbols[Group1]=[ Return, NoSymbol, Linefeed, NoSymbol ],
+        type[Group2]="TWO_LEVEL", symbols[Group2]=[ Return, NoSymbol ]
+    };
+
+    key <AC01> {
+        type[Group1]="FOUR_LEVEL_ALPHABETIC", symbols[Group1]=[ a, A, Greek_alpha, Greek_ALPHA ],
+        type[Group2]="TWO_LEVEL",             symbols[Group2]=[ uptack, NoSymbol ]
+    };
+    key <AC02> {
+        type[Group1]="FOUR_LEVEL_ALPHABETIC", symbols[Group1]=[ s, S, Greek_sigma, Greek_SIGMA ],
+        type[Group2]="TWO_LEVEL",             symbols[Group2]=[ downtack, NoSymbol ]
+    };
+    key <AC03> {
+        type[Group1]="FOUR_LEVEL_ALPHABETIC", symbols[Group1]=[ d, D, Greek_delta, Greek_DELTA ],
+        type[Group2]="TWO_LEVEL",             symbols[Group2]=[ righttack, NoSymbol ]
+    };
+    key <AC04> {
+        type[Group1]="FOUR_LEVEL_ALPHABETIC", symbols[Group1]=[ f, F, Greek_phi, Greek_PHI ],
+        type[Group2]="TWO_LEVEL",             symbols[Group2]=[ lefttack, NoSymbol ]
+    };
+    key <AC05> {
+        type[Group1]="FOUR_LEVEL_ALPHABETIC", symbols[Group1]=[ g, G, Greek_gamma, Greek_GAMMA ],
+        type[Group2]="TWO_LEVEL",             symbols[Group2]=[ uparrow, NoSymbol ]
+    };
+    key <AC06> {
+        type[Group1]="FOUR_LEVEL_ALPHABETIC", symbols[Group1]=[ h, H, Greek_eta, Greek_ETA ],
+        type[Group2]="TWO_LEVEL",             symbols[Group2]=[ downarrow, NoSymbol ]
+    };
+    key <AC07> {
+        type[Group1]="FOUR_LEVEL_ALPHABETIC", symbols[Group1]=[ j, J, U03D1, U03F4 ],
+        type[Group2]="TWO_LEVEL",             symbols[Group2]=[ leftarrow, NoSymbol ]
+    };
+    key <AC08> {
+        type[Group1]="FOUR_LEVEL_ALPHABETIC", symbols[Group1]=[ k, K, Greek_kappa, Greek_KAPPA ],
+        type[Group2]="TWO_LEVEL",             symbols[Group2]=[ rightarrow, NoSymbol ]
+    };
+    key <AC09> {
+        type[Group1]="FOUR_LEVEL_ALPHABETIC", symbols[Group1]=[ l, L, Greek_lambda, Greek_LAMBDA ],
+        type[Group2]="TWO_LEVEL",             symbols[Group2]=[ U2194, NoSymbol ]
+    };
+    key <AC10> {
+        type[Group1]="FOUR_LEVEL", symbols[Group1]=[ semicolon, colon, diaeresis, NoSymbol ],
+        type[Group2]="TWO_LEVEL", symbols[Group2]=[ NoSymbol, NoSymbol ]
+    };
+    key <AC11> {
+        type[Group1]="FOUR_LEVEL", symbols[Group1]=[ apostrophe, quotedbl, periodcentered, U0387 ],
+        type[Group2]="TWO_LEVEL", symbols[Group2]=[ NoSymbol, NoSymbol ]
+    };
+
+    key <TLDE> {
+        type[Group1]="FOUR_LEVEL", symbols[Group1]=[ grave, asciitilde, grave, asciitilde ],
+        type[Group2]="TWO_LEVEL", symbols[Group2]=[ NoSymbol, NoSymbol ]
+    };
+    key <BKSL> {
+        type[Group1]="FOUR_LEVEL", symbols[Group1]=[ backslash, bar, U2016, brokenbar ],
+        type[Group2]="TWO_LEVEL", symbols[Group2]=[ NoSymbol, NoSymbol ]
+    };
+    key <AB01> {
+        type[Group1]="FOUR_LEVEL_ALPHABETIC", symbols[Group1]=[ z, Z, Greek_zeta, Greek_ZETA ],
+        type[Group2]="TWO_LEVEL",             symbols[Group2]=[ downcaret, NoSymbol ]
+    };
+    key <AB02> {
+        type[Group1]="FOUR_LEVEL_ALPHABETIC", symbols[Group1]=[ x, X, Greek_xi, Greek_XI ],
+        type[Group2]="TWO_LEVEL",             symbols[Group2]=[ downstile, NoSymbol ]
+    };
+    key <AB03> {
+        type[Group1]="FOUR_LEVEL_ALPHABETIC", symbols[Group1]=[ c, C, Greek_chi, Greek_CHI ],
+        type[Group2]="TWO_LEVEL",             symbols[Group2]=[ upstile, NoSymbol ]
+    };
+    key <AB04> {
+        type[Group1]="FOUR_LEVEL_ALPHABETIC", symbols[Group1]=[ v, V, Greek_finalsmallsigma, Greek_SIGMA ],
+        type[Group2]="TWO_LEVEL",             symbols[Group2]=[ similarequal, NoSymbol ]
+    };
+    key <AB05> {
+        type[Group1]="FOUR_LEVEL_ALPHABETIC", symbols[Group1]=[ b, B, Greek_beta, Greek_BETA ],
+        type[Group2]="TWO_LEVEL",             symbols[Group2]=[ identical, NoSymbol ]
+    };
+    key <AB06> {
+        type[Group1]="FOUR_LEVEL_ALPHABETIC", symbols[Group1]=[ n, N, Greek_nu, Greek_NU ],
+        type[Group2]="TWO_LEVEL",             symbols[Group2]=[ lessthanequal, NoSymbol ]
+    };
+    key <AB07> {
+        type[Group1]="FOUR_LEVEL_ALPHABETIC", symbols[Group1]=[ m, M, Greek_mu, Greek_MU ],
+        type[Group2]="TWO_LEVEL",             symbols[Group2]=[ greaterthanequal, NoSymbol ]
+    };
+    key <AB08> {
+        type[Group1]="FOUR_LEVEL", symbols[Group1]=[ comma, less, guillemetleft, U300A ],
+        type[Group2]="TWO_LEVEL", symbols[Group2]=[ NoSymbol, NoSymbol ]
+    };
+    key <AB09> {
+        type[Group1]="FOUR_LEVEL", symbols[Group1]=[ period, greater, guillemetright, U300B ],
+        type[Group2]="TWO_LEVEL", symbols[Group2]=[ NoSymbol, NoSymbol ]
+    };
+    key <AB10> {
+        type[Group1]="FOUR_LEVEL", symbols[Group1]=[ slash, question, integral, NoSymbol ],
+        type[Group2]="TWO_LEVEL", symbols[Group2]=[ NoSymbol, NoSymbol ]
+    };
+    key <SPCE> {
+        type[Group1]="FOUR_LEVEL", symbols[Group1]=[ space, NoSymbol, space, NoSymbol ],
+        type[Group2]="TWO_LEVEL", symbols[Group2]=[ space, NoSymbol ]
+    };
+    key <LSGT> {
+        type[Group1]="FOUR_LEVEL", symbols[Group1]=[ less, greater, less, greater ],
+        type[Group2]="TWO_LEVEL", symbols[Group2]=[ bar, brokenbar ]
+    };
+
+    replace key <CAPS> { type="ONE_LEVEL", [ Caps_Lock ] };
+    replace key <LCTL> { type="ONE_LEVEL", [ Control_L ] };
+    replace key <RCTL> { type="ONE_LEVEL", [ Control_R ] };
+    replace key <RALT> { type="ONE_LEVEL", [ Alt_L ] };
+    replace key <LALT> { type="ONE_LEVEL", [ Meta_L ] };
+    replace key <LWIN> { type="ONE_LEVEL", [ Super_L ] };
+    replace key <RWIN> { type="ONE_LEVEL", [ Hyper_L ] };
+    replace key <LVL3> { type="ONE_LEVEL", [ Mode_switch ] };
+    replace key <LVL5> { type="ONE_LEVEL", [ Mode_switch ] };
+    override key <ZEHA> { type[Group1]="ONE_LEVEL", symbols[Group1]=[ ISO_Level3_Shift ] };
+
+    // Expected xkbcomp warnings (informational, resolved correctly):
+    //   - <LVL3> "Using none, ignoring Mod3": pc symbols inherits a Mod5
+    //     binding for <LVL3>; we suppress it via this map. <LVL3> emits
+    //     Mode_switch and is not bound to any real Mod.
+    modifier_map None    { <RCTL>, <NMLK>, <LVL3>, <LVL5> };
+    modifier_map Shift   { <LFSH>, <RTSH> };
+    modifier_map Control { <LCTL> };
+    modifier_map Lock    { <CAPS> };
+    modifier_map Mod1    { <LWIN> };
+    modifier_map Mod2    { <RWIN> };
+    modifier_map Mod3    { <LALT> };
+    modifier_map Mod4    { <RALT> };
+    modifier_map Mod5    { <ZEHA> };
+};
+
+default partial alphanumeric_keys modifier_keys
+xkb_symbols "basic" {
+    include "spacecadet(base)"
+};
