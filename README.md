@@ -4,6 +4,16 @@ Kanata and XKB configs for a Space Cadet-inspired Kinesis Advantage 2 / Advantag
 
 The default variant is layer-based: hold `End` or `PgDn` for a `fun` layer with Space Cadet command keys. Chord-based variants are also included for reference.
 
+## Keymap drawings
+
+### Layered layout (primary)
+
+![Kinesis Advantage 2 layered Space Cadet keymap](drawings/kinesis.advantage2.layered.svg)
+
+### Chorded layout (alternate)
+
+![Kinesis Advantage 2 chorded Space Cadet keymap](drawings/kinesis.advantage2.svg)
+
 ## Contents
 
 - `kanata/` — Kanata configs for Advantage 2 and Advantage 360.
