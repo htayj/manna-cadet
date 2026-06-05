@@ -56,6 +56,10 @@ layout: {zmk_keyboard: adv360}
   s; (tap-hold-release 200 200 ; lmet)         ;; right homerow super
   Hro (tap-hold-release 200 200 bspc ralt)     ;; left thumb alt
   Hsp (tap-hold-release 200 200 spc  ralt)     ;; right thumb alt
+  Game (layer-toggle game)                     ;; toggle game layer
+  Gctl (tap-hold-release 200 200 ent lctl)     ;; game: tap Enter, hold Ctrl
+  Galt (tap-hold-release 200 200 del lalt)     ;; game: tap Delete, hold Alt
+  Gsup (tap-hold-release 200 200 pgdn lmet)    ;; game: tap PgDn, hold Super
   HscL (tap-hold-release 200 200 end  (layer-while-held fun))       ;; tap End, hold function layer
   HscR (tap-hold-release 200 200 pgdn (layer-while-held fun))       ;; tap PgDn, hold function layer
 ;;  Tr (tap-next-release r (layer-toggle top))         ;; left homerow top
@@ -115,9 +119,20 @@ layout: {zmk_keyboard: adv360}
   lshift z    x    c    v    b              n    m    ,    .    /     rshift
 	       grv  caps left right               up   down [    ]
 
-                  @gr   lrld                rmet  @top
+                  @gr   @Game               rmet  @top
 		     			          home                pgup
              @Hro @gdel @HscL               @HscR @rtop @Hsp
+)
+(deflayer game
+  =      1    2    3    4    5    	    		6    7    8    9    0    -  
+  tab    q    w    e    r    t F18      F20 y    u    i    o    p     \
+  esc    a    s    d    f    g F19      F21 h    j    k    l    ;     '
+  lshift z    x    c    v    b              n    m    ,    .    /     rshift
+	       grv  caps left right               up   down [    ]
+
+                  lctl  @Game               rmet  rctl
+		     			          home                pgup
+             bspc @Galt end                 @Gsup @Gctl spc
 )
 (deflayer fun
   _    @sc-i @sc-ii @sc-iii @sc-iv _              _    @sc-fingerleft @sc-thumbup @sc-thumbdown @sc-fingerright _
