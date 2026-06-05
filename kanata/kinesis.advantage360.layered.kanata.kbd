@@ -56,7 +56,8 @@ layout: {zmk_keyboard: adv360}
   s; (tap-hold-release 200 200 ; lmet)         ;; right homerow super
   Hro (tap-hold-release 200 200 bspc ralt)     ;; left thumb alt
   Hsp (tap-hold-release 200 200 spc  ralt)     ;; right thumb alt
-  Game (layer-toggle game)                     ;; toggle game layer
+  GoGame (layer-switch game)                   ;; enter game layer
+  ExitGame (layer-switch normal)               ;; exit game layer
   Gjmp (multi w spc reverse-release-order)     ;; game: press W before Space; release W last
   Ghop (multi spc w reverse-release-order)     ;; game: press Space before W; release Space last
   Gnp7 (macro-repeat kp7 50)                   ;; game: repeat numpad 7 while held
@@ -122,7 +123,7 @@ layout: {zmk_keyboard: adv360}
   lshift z    x    c    v    b              n    m    ,    .    /     rshift
 	       grv  caps left right               up   down [    ]
 
-                  @gr   @Game               rmet  @top
+                  @gr   @GoGame             rmet  @top
 		     			          home                pgup
              @Hro @gdel @HscL               @HscR @rtop @Hsp
 )
@@ -133,7 +134,7 @@ layout: {zmk_keyboard: adv360}
   lshift z    x    c    v    b              n    m    ,    .    /     rshift
 	       grv  caps left right               up   down [    ]
 
-                  lctl  @Game               rmet  rctl
+                  lctl  @ExitGame           rmet  rctl
 		     			          home                pgup
              bspc @Galt end                 @Gsup @Gctl spc
 )
