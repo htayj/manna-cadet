@@ -24,11 +24,13 @@ layout: {zmk_keyboard: adv360}
   -------------------------------------------------------------------------- |#
 
 
-;; (deflocalkeys-sun
-;;   F18 247
-;; 	F19 138
-;; 	F20 248
-;; 	F21 142)
+;; Kinesis hotkey source keycodes. The keyboard firmware sends these raw
+;; keycodes for the physical keys we refer to below as F18-F21.
+(deflocalkeys-linux
+  F18 135
+  F19 138
+  F20 115
+  F21 142)
 ;; US
 (defsrc
   =      1    2    3    4    5    			        6    7    8    9    0    -  
