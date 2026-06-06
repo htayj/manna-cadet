@@ -24,18 +24,20 @@ layout: {zmk_keyboard: adv360}
   -------------------------------------------------------------------------- |#
 
 
-;; Kinesis hotkey source keycodes. The keyboard firmware sends these raw
-;; keycodes for the physical keys we refer to below as F18-F21.
+;; Kinesis hotkey source keycodes. Keep these as source-only aliases so
+;; layer outputs can still emit real F18-F21. X11 reports Menu/SunProps as
+;; keycodes 135/138, while Kanata's Linux local-key table wants evdev
+;; codes 127/130 for those same physical keys.
 (deflocalkeys-linux
-  F18 135
-  F19 138
-  F20 115
-  F21 142)
+  K18 127  ;; X keycode 135: Menu/Compose
+  K19 130  ;; X keycode 138: SunProps/Props
+  K20 115
+  K21 142)
 ;; US
 (defsrc
   =      1    2    3    4    5    			        6    7    8    9    0    -  
-  tab    q    w    e    r    t F18          F20 y    u    i    o    p     \
-  esc    a    s    d    f    g F19          F21 h    j    k    l    ;     ' 
+  tab    q    w    e    r    t K18          K20 y    u    i    o    p     \
+  esc    a    s    d    f    g K19          K21 h    j    k    l    ;     ' 
   lshift z    x    c    v    b                  n    m    ,    .    /     rshift
 	       grv  caps left right                   up   down [    ]
 
