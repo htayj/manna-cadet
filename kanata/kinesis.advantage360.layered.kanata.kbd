@@ -62,8 +62,8 @@ layout: {zmk_keyboard: adv360}
   Hsp (tap-hold-release 200 200 spc  ralt)     ;; right thumb alt
   GoGame (layer-switch game)                   ;; enter game layer
   ExitGame (layer-switch normal)               ;; exit game layer
-  Gjmp (multi up spc reverse-release-order)    ;; game: press Up before Space; release Up last
-  Ghop (multi spc up reverse-release-order)    ;; game: press Space before Up; release Space last
+  Gjmp (multi up del reverse-release-order)    ;; game: press Up before Delete; release Up last
+  Ghop (multi del up reverse-release-order)    ;; game: press Delete before Up; release Delete last
   Gnp7 (macro-repeat kp7 50)                   ;; game: repeat numpad 7 while held
   Gctl (tap-hold-release 200 200 ent lctl)     ;; game: tap Enter, hold Ctrl
   Galt (tap-hold-release 200 200 del lalt)     ;; game: tap Delete, hold Alt
