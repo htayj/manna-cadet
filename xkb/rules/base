@@ -4,6 +4,9 @@
 ! layout = keycodes
   * = +aliases(qwerty)
 
+! layout[1] = keycodes
+  * = +aliases(qwerty)
+
 ! model = types
   * = complete
 
@@ -13,6 +16,46 @@
 ! model = geometry
   * = pc(pc104)
 
+// Two things matter in the symbols rules below.
+//
+// 1. NO `pc+' prefix for spacecadet. `pc' installs its own modifier_map entries
+//    which override spacecadet's. The result compiles with NO error but leaves
+//    `modifier_map Mod4' EMPTY, so the WM modifier binds to nothing and every
+//    Mod4 keybinding silently fails. Verified:
+//      "inet(evdev)+spacecadet(base)"     -> modifier_map Mod4 { <RALT> }
+//      "pc+inet(evdev)+spacecadet(base)"  -> modifier_map Mod4 { }
+//
+// 2. `spacecadet(base)` is a TWO-GROUP map (base/Greek levels in group 1, the
+//    Top/math layer in group 2). XKB normally assigns one layout per group, and
+//    a map whose KEYS each declare two groups cannot be selected through
+//    XKB_DEFAULT_LAYOUT — libxkbcommon reports
+//      "explicit group 1 is specified, but key <X> has more than one group"
+//    and fails. symbols/spacecadet works around this by composing `base' from
+//    `g1' plus `include "spacecadet(top):2"', moving the group assignment to
+//    the include rather than the individual keys. That makes the plain
+//    single-layout route work:
+//
+//      XKB_DEFAULT_LAYOUT=spacecadet
+//
+//    which is the only route available to compositors that cannot load a keymap
+//    file directly, such as river.
+//
+// `g1' and `top' are deliberately NOT registered in evdev.xml: they are internal
+// components of `base', not layouts to select.
+
 ! model layout = symbols
-  * spacecadet = pc+inet(evdev)+spacecadet(base)
-  * * = pc+%l%(v)+inet(evdev)
+  * spacecadet = inet(evdev)+spacecadet(base)
+  * *          = pc+%l%(v)+inet(evdev)
+
+! model layout[1] = symbols
+  * spacecadet = inet(evdev)+spacecadet(base)
+  * *          = pc+%l[1]%(v[1])+inet(evdev)
+
+! model layout[2] = symbols
+  * * = +%l[2]%(v[2]):2
+
+! model layout[3] = symbols
+  * * = +%l[3]%(v[3]):3
+
+! model layout[4] = symbols
+  * * = +%l[4]%(v[4]):4
