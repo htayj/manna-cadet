@@ -19,10 +19,10 @@
 //
 // Modifier slot layout (final, after resolving inherited bindings):
 //   Lock: <CAPS> (Caps_Lock, latch behaviour from compat/caps)
-//   Mod1: Super_L (LWIN)
+//   Mod1: Meta_L  (LALT; Emacs uses as Meta)
 //   Mod2: Hyper_L (RWIN)
-//   Mod3: Meta_L  (LALT, thumb Alt; Emacs uses as Meta)
-//   Mod4: Alt_L   (RALT) -- stumpwm hard-uses Mod4 as its WM modifier
+//   Mod3: Alt_L   (RALT, thumb Alt; window-manager modifier)
+//   Mod4: Super_L (LWIN)
 //   Mod5: ISO_Level3_Shift (ZEHA) -- Greek layer trigger
 //
 // Space Cadet command-key vocabulary (no physical binding yet -- assign
@@ -344,8 +344,8 @@ xkb_symbols "g1" {
     modifier_map Lock    { <CAPS> };
     modifier_map Mod1    { <LALT> };
     modifier_map Mod2    { <RWIN> };
-    modifier_map Mod3    { <LWIN> };
-    modifier_map Mod4    { <RALT> };
+    modifier_map Mod3    { <RALT> };
+    modifier_map Mod4    { <LWIN> };
     modifier_map Mod5    { <ZEHA> };
 };
 
