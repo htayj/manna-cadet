@@ -25,12 +25,61 @@ The default variant is layer-based: hold `End` or `PgDn` for a `fun` layer with 
 - `space-cadet-layered-mnemonics.md` — mnemonic notes for the `fun` layer.
 - `reload-spacecadet-xkb.sh` — helper to reapply XKB after Kanata recreates its uinput device.
 
+## Abstract layout language
+
+`model/manna-cadet.lisp` is inert data parsed by Common Lisp code. It describes an
+abstract keyboard layout rather than a physical device or target format. The language
+supports unlimited explicit levels, selector dimensions and states, layers, modifiers,
+combos, tap-hold actions, and simultaneous continuous actions.
+
+```lisp
+(layout example
+  (levels (base (selectors)))
+  (layers (root main))
+  (symbols alpha)
+  (keys (key letter ((main base) alpha))))
+```
+
+The Manna model currently declares exactly 8 shift levels and 5 modifiers; `fun` is a
+separate layer. The current XKB and Kanata files remain operational, hand-authored
+artifacts. Realization and compiler work are deliberately deferred, so this frontend
+does not produce target configuration files.
+
+Use the frontend directly or through Make. These commands validate or write
+layout output to standard output and do not generate target configuration
+artifacts; ASDF may populate its normal compilation cache.
+
+```sh
+bin/manna-cadet check model/manna-cadet.lisp
+bin/manna-cadet normalize model/manna-cadet.lisp
+bin/manna-cadet inspect model/manna-cadet.lisp
+
+make check
+make normalize
+make inspect
+make check MODEL=path/to/layout.lisp
+```
+
+`inspect` is a diagnostic tool, so it preflights its output before writing. It
+rejects inspections above 50,000 rows or a conservative 4 MiB UTF-8 output
+estimate. Rows are `contexts x (keys + combos) x levels`; these tooling budgets
+do not limit the number of levels, modifiers, layers, keys, or combos accepted
+by the layout model or validator.
+
+Normalized data escapes terminal controls, Unicode line separators, and common
+bidi/format controls as `\xHEX;`. The constrained reader decodes the same form,
+so programmatically constructed strings still round-trip without emitting raw
+control characters. Symbol display strings containing those characters are
+reported as `invalid-display-string` during validation.
+
 ## Requirements
 
 - [kanata](https://github.com/jtroo/kanata)
 - `xkbcomp`
 - Python 3 with PyYAML
 - [`keymap-drawer`](https://github.com/caksoylar/keymap-drawer) for drawing generation (`keymap` command)
+- [SBCL](http://www.sbcl.org/) (for the `bin/manna-cadet` frontend)
+- GNU Make (optional, for Makefile targets)
 
 ## Generate drawings
 
