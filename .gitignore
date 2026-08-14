@@ -1,0 +1,15 @@
+# Common Lisp build artifacts
+*.fasl
+*.fas
+*.lib
+*.lx64fsl
+*.wx64fsl
+*.dx64fsl
+*.lx32fsl
+*.wx32fsl
+*.dx32fsl
+*.lisp-temp
+
+# Local tooling directories
+.omo/
+.serena/

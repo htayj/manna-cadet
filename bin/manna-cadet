@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+# bin/manna-cadet - noninteractive SBCL wrapper for the manna-cadet CLI.
+set -euo pipefail
+
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+REPO_ROOT="$(cd "${SCRIPT_DIR}/.." && pwd)"
+
+export CL_SOURCE_REGISTRY="${REPO_ROOT}/lisp//:${CL_SOURCE_REGISTRY:-}"
+
+exec sbcl --noinform --non-interactive --no-userinit --no-sysinit \
+  --eval "(require :asdf)" \
+  --eval "(let ((*compile-verbose* nil) (*load-verbose* nil) (*compile-print* nil) (*load-print* nil)) (asdf:load-system :manna-cadet/cli))" \
+  --eval "(uiop:quit (manna-cadet.cli:main))" \
+  --end-toplevel-options "$@"
